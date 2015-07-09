@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150708142234) do
+ActiveRecord::Schema.define(version: 20150709085356) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -19,13 +19,13 @@ ActiveRecord::Schema.define(version: 20150708142234) do
   create_table "peaces", force: :cascade do |t|
     t.string   "country_name"
     t.string   "country_code"
-    t.integer  "edu_index"
-    t.integer  "heal_index"
+    t.float    "edu_index"
+    t.float    "heal_index"
     t.string   "hdi_index"
-    t.integer  "edu_exp"
-    t.integer  "heal_exp"
-    t.integer  "gdp"
-    t.integer  "life"
+    t.float    "edu_exp"
+    t.float    "heal_exp"
+    t.float    "gdp"
+    t.float    "life"
     t.datetime "created_at",   null: false
     t.datetime "updated_at",   null: false
   end
