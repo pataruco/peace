@@ -3,7 +3,7 @@ Rails.application.routes.draw do
 
   get 'wars/index'
 
-  root 'wars#index'
+  root 'peaces#index'
 
   mount RailsAdmin::Engine => '/admin', as: 'rails_admin'
   devise_for :users

@@ -1,2 +1,9 @@
 <h1>Peaces#index</h1>
-<p>Find me in app/views/peaces/index.html.erb</p>
+
+
+
+<% @peaces.each do |peace| %>
+	<ul>
+		<li> <%= peace.country_name  %> </li>
+	</ul>
+<% end %>
