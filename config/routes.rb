@@ -1,6 +1,8 @@
 Rails.application.routes.draw do
   get 'peaces/index'
 
+  get 'peaces/show/:id', :to => 'peaces#show'
+
   get 'wars/index'
 
   root 'peaces#index'
