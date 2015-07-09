@@ -1,9 +1,20 @@
 <h1>Peaces#index</h1>
 
+<div id="map-container">
+	<p>Map conteiner</p>
+		
+</div>
 
 
-<% @peaces.each do |peace| %>
-	<ul>
-		<li> <%= peace.country_name  %> </li>
-	</ul>
-<% end %>
+
+
+
+
+
+<div class="list_of-countries">
+	<% @peaces.each do |peace| %>
+		<ul>
+			<li> <%= peace.country_name  %> </li>
+		</ul>
+	<% end %>
+</div>
