@@ -23,13 +23,15 @@ $(document).ready(function() {
 	//Rendering the map
 	var map = new Datamap({
 		element: document.getElementById('map-container'),
-		    done: function(datamap) {
-            datamap.svg.selectAll('.datamaps-subunit').on('click', function(geography) {
-                console.log(geography.properties.name);
-                console.log(geography);
+		done: function(datamap) {
+			datamap.svg.selectAll('.datamaps-subunit').on('click', function(geography) {
+				console.log(geography.properties.name);
+                country_code = (geography.id);
+                console.log(country_code)
+                
 
             });
-        },
+        }
 	});
 
 	//Make map responsive
