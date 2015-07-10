@@ -6,6 +6,8 @@ $(document).ready(function() {
 	//Rendering the map
 	var map = new Datamap({
 		element: document.getElementById('map-container'),
+		
+		projection: 'mercator',
 
 		done: function(datamap) {
 			datamap.svg.selectAll('.datamaps-subunit').on('click', function(geography) {
