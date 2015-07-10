@@ -6,8 +6,19 @@ $(document).ready(function() {
 	//Rendering the map
 	var map = new Datamap({
 		element: document.getElementById('map-container'),
-		
+
 		projection: 'mercator',
+
+		fills: {defaultFill: 'F4FDFF'},
+
+		geographyConfig: {
+			highlightFillColor: 'grey',
+            borderColor: 'white',
+            borderWidth: 0,
+	        highlightFillColor: 'white',
+	        highlightBorderColor: 'black',
+	        highlightBorderWidth: 1
+		},
 
 		done: function(datamap) {
 			datamap.svg.selectAll('.datamaps-subunit').on('click', function(geography) {
