@@ -39,24 +39,14 @@ $(document).ready(function() {
 						}
 	    			}).done(function(data){
 	    				$("#info-window").text(country_data[0].country_name);
-		        		var bubbly = $("#info-window");      
-		        		bubbly.css({
+		        		var infoWindow = $("#info-window");      
+		        		infoWindow.css({
 		        			position:"absolute", 
 		        			top: yCoord, // need x and y coordinates from click
 		        			left: xCoord
         				});
 	    			});		
-                // var test = dataOnInfoWindow(geography.id);
-                // debugger;
-                // console.log(test);
-          //       $("#info-window").text(country_data[0].country_name);
-        		// var bubbly = $("#info-window");      
-        		// bubbly.css({
-        		// 	position:"absolute", 
-        		// 	top: d3.event.pageY, 
-        		// 	left: d3.event.pageX
-        		// });
-
+          
         	});
 
 		}
@@ -64,22 +54,7 @@ $(document).ready(function() {
 	}); // end of map
 
 
-	// fetch the data from database on click on map and storing in a global variables
-	// function dataOnInfoWindow (country_code){
-	// 	$.ajax({
-	// 		type: "GET",
-	// 		contentType: "application/json; charset=utf-8",
-	// 		url: 'peaces/show/' + country_code,
-	// 		dataType: 'json',
-	// 		success: function (data) {
-	// 			country_data = data;
-	// 			console.log(country_data[0]);
-	// 		},
-	// 		error: function (result) {
-	// 			console.log('error');
-	// 			console.log(result);
-	// 		}
-	//     }).done(function(data){debugger; return data;});
+
 			
 		
 
