@@ -5,7 +5,7 @@ class PeacesController < ApplicationController
 
   def show
   	@peace = Peace.where(country_code: params[:id])
-  	binding.pry
+  	render json: @peace
   end
 
 
