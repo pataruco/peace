@@ -15,6 +15,8 @@ $(document).ready(function() {
             });
         },
 
+        data: {country_data}, 
+
         geographyConfig: {
         	popupTemplate: function(geo, data) {
         		if (data !== null) {
@@ -25,7 +27,6 @@ $(document).ready(function() {
         			console.log(data);
         		}
         	},
-        	hideAntarctica: false,
             highlightFillColor: 'grey',
             borderColor: 'white',
             borderWidth: 0
