@@ -1,6 +1,7 @@
 class PeacesController < ApplicationController
   def index
   	@peaces = Peace.all
+  	# render json: @peaces
   end
 
   def show

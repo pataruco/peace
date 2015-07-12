@@ -1,6 +1,6 @@
 // Variables
 var country_data = [];
-
+var map = {};
 $(document).ready(function() {
 
 	//Rendering the map
@@ -53,7 +53,7 @@ $(document).ready(function() {
 
 	}); // end of map
 
-
+	
 
 			
 		
@@ -65,6 +65,7 @@ $(document).ready(function() {
 	 	map.resize();
 	})
        
+
 
 }); // end of document
 
