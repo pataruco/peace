@@ -1,7 +1,17 @@
-// Variables
-var country_data = [];
+
 
 $(document).ready(function() {
+	// Variables
+	var country_data = [];
+
+	//event listeners
+	$('#hdi').on('click', function(){console.log('hdi clicked')});
+	$('#edu_index').on('click', function(){console.log('inside edu index')});
+	$('#heal_index').on('click', function(){console.log('inside heal index')});
+	$('#edu_exp').on('click', renderChoropleth);
+	$('#heal_exp').on('click', function(){console.log('inside heal exp')});
+	$('#life').on('click', function(){console.log('inside life')});
+	$('#gdp').on('click', function(){console.log('inside gdp')});
 
 	//Rendering the map
 	var map = new Datamap({
