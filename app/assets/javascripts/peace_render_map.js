@@ -53,6 +53,10 @@ $(document).ready(function() {
 
 	}); // end of map
 
+	map.updateChoropleth({
+  		IRQ: '#ff2b2b'
+  	});
+
 	
 
 			
