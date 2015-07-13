@@ -70,16 +70,15 @@ $(document).ready(function() {
 		}).done(function(data){
 			console.log('done');
 			// console.log(data);
-			
-			data.forEach(function(countryData){
-				// console.log(countryData);
-				console.log(countryData.country_code);
-				console.log(countryData.edu_exp_color);
-			}); // end of for each
+			// map.updateChoropleth({
+				data.forEach(function(countryData){
+					// console.log(countryData);
+					console.log(countryData.country_code);
+					console.log(countryData.edu_exp_color);
+					// countryData.country_code: countryData.edu_exp_color;
+				}); // end of for each
 
-
-		
-
+			// })// end of Choropleth
 
 			debugger
 
