@@ -61,19 +61,23 @@ $(document).ready(function() {
 			dataType: 'json',
 			success: function (data){
 				console.log('success');
-				// console.log(data);
+				console.log(data);
 			},
 			error: function (data){
 				console.log('error');
-				// console.log(data);
+				console.log(data);
 			}
 		}).done(function(data){
 			console.log('done');
 			console.log(data);
-			data = data;
-			for (var i = data.length - 1; i >= 0; i+) {
-				console.log(data[i])
+			for (var i = data.length - 1; i >= 0; i--) {
+				console.log(data[i].country_code);
+				console.log(data[i].edu_exp);
+				console.log(data[i].edu_exp_color);
 			};
+
+
+
 			debugger
 
 		})// end of done
