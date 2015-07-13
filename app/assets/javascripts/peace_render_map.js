@@ -1,5 +1,6 @@
 // Variables
 var country_data = [];
+var choroplethData = [];
 
 $(document).ready(function() {
 
@@ -61,6 +62,7 @@ $(document).ready(function() {
 			dataType: 'json',
 			success: function (data){
 				console.log('success');
+				choroplethData = data
 				// console.log(data);
 			},
 			error: function (data){
@@ -69,20 +71,29 @@ $(document).ready(function() {
 			}
 		}).done(function(data){
 			console.log('done');
-			// console.log(data);
-			// map.updateChoropleth({
-				data.forEach(function(countryData){
-					// console.log(countryData);
-					console.log(countryData.country_code);
-					console.log(countryData.edu_exp_color);
-					// countryData.country_code: countryData.edu_exp_color;
-				}); // end of for each
+			console.log(data);
+			choroplethData = data
+			// data.forEach(function(countryData){
+			// 	console.log(countryData);
+			// 	console.log(countryData.country_code);
+			// 	console.log(countryData.edu_exp_color);
+			// }); // end of for each
 
-			// })// end of Choropleth
 
-			debugger
+		});// end of done
 
-		})// end of done
+		
+
+		map.updateChoropleth({
+			IRQ: '#ff2b2b'
+			// choroplethData.forEach(function(country){
+			// 	console.log(country);
+			// 	console.log(country.country_code);
+			// 	console.log(country.edu_exp_color);
+			// }); // end of for each
+
+		})// end map.updateChoropleth
+
 	}// end of renderChoropleth()
 
 	renderChoropleth();
