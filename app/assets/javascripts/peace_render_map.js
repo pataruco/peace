@@ -86,7 +86,7 @@ $(document).ready(function() {
 
 	}// end of renderChoropleth()
 
-	renderChoropleth();
+
 
 
 
