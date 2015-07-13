@@ -1,17 +1,16 @@
-
-
 $(document).ready(function() {
 	// Variables
 	var country_data = [];
+	// var indicator = '';
 
 	//event listeners
-	$('#hdi').on('click', function(){console.log('hdi clicked')});
-	$('#edu_index').on('click', function(){console.log('inside edu index')});
-	$('#heal_index').on('click', function(){console.log('inside heal index')});
+	$('#hdi').on('click', chooseIndicator);
+	$('#edu_index').on('click', chooseIndicator);
+	$('#heal_index').on('click', chooseIndicator);
 	$('#edu_exp').on('click', renderChoropleth);
-	$('#heal_exp').on('click', function(){console.log('inside heal exp')});
-	$('#life').on('click', function(){console.log('inside life')});
-	$('#gdp').on('click', function(){console.log('inside gdp')});
+	$('#heal_exp').on('click', chooseIndicator);
+	$('#life').on('click', chooseIndicator);
+	$('#gdp').on('click', chooseIndicator);
 
 	//Rendering the map
 	var map = new Datamap({
@@ -59,11 +58,19 @@ $(document).ready(function() {
           
         	});
 
-		}
+		},
+
 
 	}); // end of map
 
-	function renderChoropleth() {
+	function chooseIndicator () {
+		indicator = this.id + '_color';
+		console.log(indicator);
+
+		renderChoropleth(indicator);
+	};
+
+	function renderChoropleth(indicator) {
 		$.ajax({
 			type: "GET",
 			contentType: "application/json; charset=utf-8",
@@ -81,12 +88,14 @@ $(document).ready(function() {
 			renderNewMap(data);
 		});// end of done
 
-		
 		function renderNewMap(data) {
 			var colors = {}
 			data.forEach(function(country){
+				// colors[country.country_code] = country.indicator;
 				colors[country.country_code] = country.edu_exp_color;
+				
 			});
+			console.log(colors);
 			map.updateChoropleth(
 				colors
 			);// end map.updateChoropleth
@@ -96,17 +105,9 @@ $(document).ready(function() {
 
 	}// end of renderChoropleth()
 
-
-
-
-
-
 	//Make map responsive
 	$(window).on('resize', function() {
 	 	map.resize();
 	})
        
-
-
 }); // end of document
-
