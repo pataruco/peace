@@ -61,7 +61,7 @@ $(document).ready(function() {
 			dataType: 'json',
 			success: function (data){
 				console.log('success');
-				console.log(data);
+				// console.log(data);
 			},
 			error: function (data){
 				console.log('error');
@@ -69,13 +69,16 @@ $(document).ready(function() {
 			}
 		}).done(function(data){
 			console.log('done');
-			console.log(data);
-			for (var i = data.length - 1; i >= 0; i--) {
-				console.log(data[i].country_code);
-				console.log(data[i].edu_exp);
-				console.log(data[i].edu_exp_color);
-			};
+			// console.log(data);
+			
+			data.forEach(function(countryData){
+				// console.log(countryData);
+				console.log(countryData.country_code);
+				console.log(countryData.edu_exp_color);
+			}); // end of for each
 
+
+		
 
 
 			debugger
