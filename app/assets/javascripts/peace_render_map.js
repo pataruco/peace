@@ -53,9 +53,29 @@ $(document).ready(function() {
 
 	}); // end of map
 
-	map.updateChoropleth({
-  		IRQ: '#ff2b2b'
-  	});
+	function renderChoropleth() {
+		$.ajax({
+			type: "GET",
+			contentType: "application/json; charset=utf-8",
+			url: 'peaces/index',
+			dataType: 'json',
+			success: function (data){
+				console.log('success');
+				console.log(data);
+			},
+			error: function (data){
+				console.log('error');
+				console.log(data);
+			}
+		})// end of ajax reques
+	}// end of renderChoropleth()
+
+	renderChoropleth()
+
+
+	// map.updateChoropleth({
+ //  		IRQ: '#ff2b2b'
+ //  	});
 
 	
 

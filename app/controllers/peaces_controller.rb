@@ -1,7 +1,9 @@
 class PeacesController < ApplicationController
+	respond_to :html, :json
+
   def index
   	@peaces = Peace.all
-  	# render json: @peaces
+  	respond_with @peaces
   end
 
   def show
