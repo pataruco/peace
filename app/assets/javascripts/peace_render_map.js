@@ -70,7 +70,7 @@ $(document).ready(function() {
 		renderChoropleth(indicator);
 	};
 
-	function renderChoropleth(indicator) {
+	function renderChoropleth (indicator) {
 		$.ajax({
 			type: "GET",
 			contentType: "application/json; charset=utf-8",
@@ -89,13 +89,12 @@ $(document).ready(function() {
 		});// end of done
 
 		function renderNewMap(data) {
-			var colors = {}
+			var colors = {};
 			data.forEach(function(country){
 				// colors[country.country_code] = country.indicator;
 				colors[country.country_code] = country.edu_exp_color;
 				
 			});
-			console.log(colors);
 			map.updateChoropleth(
 				colors
 			);// end map.updateChoropleth
