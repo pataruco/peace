@@ -1,6 +1,6 @@
 // Variables
 var country_data = [];
-var map = {};
+
 $(document).ready(function() {
 
 	//Rendering the map
@@ -61,16 +61,25 @@ $(document).ready(function() {
 			dataType: 'json',
 			success: function (data){
 				console.log('success');
-				console.log(data);
+				// console.log(data);
 			},
 			error: function (data){
 				console.log('error');
-				console.log(data);
+				// console.log(data);
 			}
-		})// end of ajax reques
+		}).done(function(data){
+			console.log('done');
+			console.log(data);
+			data = data;
+			for (var i = data.length - 1; i >= 0; i+) {
+				console.log(data[i])
+			};
+			debugger
+
+		})// end of done
 	}// end of renderChoropleth()
 
-	renderChoropleth()
+	renderChoropleth();
 
 
 	// map.updateChoropleth({
