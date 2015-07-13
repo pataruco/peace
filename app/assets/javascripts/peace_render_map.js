@@ -68,53 +68,26 @@ $(document).ready(function() {
 				console.log(data);
 			}
 		}).done(function(data){
-			console.log('done');
-			console.log(data);
-			test(data);
-			// data.forEach(function(countryData){
-			// 	console.log(countryData);
-			// 	console.log(countryData.country_code);
-			// 	console.log(countryData.edu_exp_color);
-			// }); // end of for each
-
-
+			renderNewMap(data);
 		});// end of done
 
 		
-		function test(data) {
-
+		function renderNewMap(data) {
 			var colors = {}
 			data.forEach(function(country){
 				colors[country.country_code] = country.edu_exp_color;
-			})
-			console.log(colors);
-			// data.forEach(function(country){
-			// 	var code = country.country_code;
-			// 	var color = country.edu_exp_color;
+			});
+			map.updateChoropleth(
+				colors
+			);// end map.updateChoropleth
 
-				map.updateChoropleth(
-					colors
-
-				// }); // end of for each
-
-				);// end map.updateChoropleth
-
-		}// end test
+		}// end RenderNewmap
 
 
 	}// end of renderChoropleth()
 
 	renderChoropleth();
 
-
-	// map.updateChoropleth({
- //  		IRQ: '#ff2b2b'
- //  	});
-
-	
-
-			
-		
 
 
 
