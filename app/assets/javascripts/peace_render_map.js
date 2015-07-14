@@ -40,7 +40,7 @@ $(document).ready(function() {
 			datamap.svg.selectAll('.datamaps-subunit').on('click', function(geography) {
 				var xCoord = d3.event.pageX;
 				var yCoord = d3.event.pageY;
-					$.ajax({
+					$.ajax({ // fetching the data from DB to each country
 						type: "GET",
 						contentType: "application/json; charset=utf-8",
 						url: 'peaces/show/' + geography.id,
@@ -65,7 +65,6 @@ $(document).ready(function() {
 		},
 	}); // end of map
 	
-	map.legend();
 
 	// Choosing indicator to update Choropleth map
 	function chooseIndicator () {
@@ -85,7 +84,6 @@ $(document).ready(function() {
 			dataType: 'json',
 			success: function (data){
 				console.log('success');
-				// console.log(data);
 			},
 			error: function (data){
 				console.log('error');
@@ -95,15 +93,15 @@ $(document).ready(function() {
 			renderNewChoroplethMap(data, indicator, indicatorColor);
 		});// end of done
 
+
+		// rendering a Choropleth with a legend dinamically
 		function renderNewChoroplethMap(data, indicator, indicatorColor) {
-			// console.log('inside renderNewChoroplethMap')
-			// console.log(indicator);
 			var colors = {};
 			var indicatorsArray = [];
 
 			data.forEach(function(country){
-				indicatorsArray.push(country[indicator]);
-				colors[country.country_code] = country[indicatorColor];
+				indicatorsArray.push(country[indicator]); // creating a array of data to do the scale of the legend
+				colors[country.country_code] = country[indicatorColor]; // creating object to update Choropleth map attributes
 			});
 
 			var min = d3.min(indicatorsArray);
@@ -120,7 +118,9 @@ $(document).ready(function() {
 
 			map.updateChoropleth(
 				colors
-			);// end map.updateChoropleth
+			);
+			
+			// method from d3.colorLegend library to render a legend
 			
 			colorlegend("#map-legend", scale, "linear", {title: legend[indicator].title });
 
