@@ -69,13 +69,14 @@ $(document).ready(function() {
 
 	// Choosing indicator to update Choropleth map
 	function chooseIndicator () {
-		indicator = this.id + '_color';
-		console.log(indicator)
-		renderChoropleth(indicator);
+		indicator = this.id;
+		indicatorColor = this.id + '_color';
+		console.log(indicatorColor)
+		renderChoropleth(indicator, indicatorColor);
 	};
 
-	//Retrieving the data dinamically depending of which indicator has benn choosen
-	function renderChoropleth (indicator) {
+	//Retrieving the data dinamically depending of which indicatorColor has benn choosen
+	function renderChoropleth (indicator, indicatorColor) {
 		$.ajax({
 			type: "GET",
 			contentType: "application/json; charset=utf-8",
@@ -90,14 +91,21 @@ $(document).ready(function() {
 				console.log(data);
 			}
 		}).done(function(data){
-			renderNewChoroplethMap(data, indicator);
+			renderNewChoroplethMap(data, indicator, indicatorColor);
 		});// end of done
 
-		function renderNewChoroplethMap(data, indicator) {
+		function renderNewChoroplethMap(data, indicator, indicatorColor) {
+			// console.log('inside renderNewChoroplethMap')
+			// console.log(indicator);
 			var colors = {};
+			var indicatorsArray = [];
 			data.forEach(function(country){
-				colors[country.country_code] = country[indicator];
+				indicatorsArray.push(country[indicator]);
+				colors[country.country_code] = country[indicatorColor];
 			});
+
+			console.log('indicatorsArray');
+			console.log(indicatorsArray);
 
 			map.updateChoropleth(
 				colors
@@ -114,6 +122,5 @@ $(document).ready(function() {
 		map.resize();
     });
 
-	
     
 }); // end of document
