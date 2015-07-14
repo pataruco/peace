@@ -99,19 +99,25 @@ $(document).ready(function() {
 			// console.log(indicator);
 			var colors = {};
 			var indicatorsArray = [];
+
 			data.forEach(function(country){
 				indicatorsArray.push(country[indicator]);
 				colors[country.country_code] = country[indicatorColor];
 			});
 
-			console.log('indicatorsArray');
-			console.log(indicatorsArray);
+			var min = d3.min(indicatorsArray);
+			var mean = d3.sum(indicatorsArray) / indicatorsArray.length;
+			var max = d3.max(indicatorsArray);
+
+			var scale = d3.scale.linear()
+    			.domain([min, mean, max])
+    			.range(["red", "white", "green"]);
 
 			map.updateChoropleth(
 				colors
 			);// end map.updateChoropleth
 
-			map.legend();
+			colorlegend("#map-legend", scale, "linear", {title: legend[indicator].title });
 
 		}// end RenderNewmap
 
