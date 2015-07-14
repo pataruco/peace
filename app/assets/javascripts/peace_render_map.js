@@ -1,7 +1,7 @@
 $(document).ready(function() {
 	// Variables
-	var country_data = [];
-	var indicator = '';
+	// var country_data = [];
+	// var indicator = '';
 
 	//event listeners
 	$('#hdi_index').on('click', chooseIndicator);
@@ -55,12 +55,8 @@ $(document).ready(function() {
 		        			left: xCoord
         				});
 	    			});		
-          
         	});
-
 		},
-
-
 	}); // end of map
 
 	function chooseIndicator () {
@@ -70,7 +66,7 @@ $(document).ready(function() {
 	};
 
 	function renderChoropleth (indicator) {
-		var localIndicator = indicator;
+		// var localIndicator = indicator;
 		$.ajax({
 			type: "GET",
 			contentType: "application/json; charset=utf-8",
@@ -85,28 +81,27 @@ $(document).ready(function() {
 				console.log(data);
 			}
 		}).done(function(data){
-			renderNewMap(data, localIndicator);
+			renderNewMap(data, indicator);
 		});// end of done
 
-		function renderNewMap(data, localIndicator) {
+		function renderNewMap(data, indicator) {
 			var colors = {};
 			data.forEach(function(country){
-				colors[country.country_code] = country[localIndicator];
-				// colors[country.country_code] = country.edu_exp_color;
-				
+				colors[country.country_code] = country[indicator];
 			});
+
 			map.updateChoropleth(
 				colors
 			);// end map.updateChoropleth
 
 		}// end RenderNewmap
 
-
 	}// end of renderChoropleth()
 
 	//Make map responsive
 	$(window).on('resize', function() {
 	 	map.resize();
-	})
+	});
+	
        
 }); // end of document
