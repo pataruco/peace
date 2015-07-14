@@ -18,7 +18,7 @@ $(document).ready(function() {
 
 		projection: 'mercator',
 
-		responsive: true,
+		// responsive: true,
 
 		fills: {defaultFill: 'F4FDFF'},
 
@@ -90,7 +90,7 @@ $(document).ready(function() {
 
 
 		function renderNewMap(data, indicator) {
-			debugger
+			$('.datamap').hide();
 			var map = new Datamap({
 				element: document.getElementById('map-container'),
 				done: function(datamap) {
