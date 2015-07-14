@@ -12,7 +12,7 @@ $(document).ready(function() {
 	$('#life').on('click', chooseIndicator);
 	$('#gdp').on('click', chooseIndicator);
 
-	//Rendering the map
+	//Rendering a map
 	var map = new Datamap({
 		element: document.getElementById('map-container'),
 
@@ -39,7 +39,6 @@ $(document).ready(function() {
 						url: 'peaces/show/' + geography.id,
 						dataType: 'json',
 						success: function (country_data) {
-							// country_data = data;
 							console.log(country_data[0]);
 						},
 						error: function (result) {
@@ -58,6 +57,8 @@ $(document).ready(function() {
         	});
 		},
 	}); // end of map
+	
+	map.legend();
 
 	// Choosing indicator to update Choropleth map
 	function chooseIndicator () {
@@ -68,7 +69,6 @@ $(document).ready(function() {
 
 	//Retrieving the data dinamically depending of which indicator has benn choosen
 	function renderChoropleth (indicator) {
-		// var localIndicator = indicator;
 		$.ajax({
 			type: "GET",
 			contentType: "application/json; charset=utf-8",
@@ -86,8 +86,6 @@ $(document).ready(function() {
 			renderNewChoroplethMap(data, indicator);
 		});// end of done
 
-
-
 		function renderNewChoroplethMap(data, indicator) {
 			var colors = {};
 			data.forEach(function(country){
@@ -98,14 +96,21 @@ $(document).ready(function() {
 				colors
 			);// end map.updateChoropleth
 
+			map.legend();
+
 		}// end RenderNewmap
 
 	}// end of renderChoropleth()
 
 	//Make map responsive
-	$(window).on('resize', function() {
-	 	map.resize();
-	});
+	d3.select(window).on('resize', function() {
+		map.resize();
+    });
+
 	
     
 }); // end of document
+
+
+
+colorbrewer['rgb(247,252,253)','rgb(229,245,249)','rgb(204,236,230)','rgb(153,216,201)','rgb(102,194,164)','rgb(65,174,118)','rgb(35,139,69)','rgb(0,109,44)','rgb(0,68,27)']
