@@ -122,7 +122,8 @@ $(document).ready(function() {
 			);// end map.updateChoropleth
 
 			// $('#map-legend').hide();
-			colorlegend("#map-legend", scale, "linear", {title: legend[indicator].title, fill: true});
+			// colorlegend("#map-container", scale, "linear", {title: legend[indicator].title, fill: true});
+			colorlegend("#map-legend", scale, "linear", {title: legend[indicator].title });
 
 		}// end RenderNewmap
 
