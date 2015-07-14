@@ -148,7 +148,7 @@ $(document).ready(function() {
 			
 			// method from d3.colorLegend library to render a legend
 
-			colorlegend("#map-legend", scale, "linear", {title: legend[indicator].title });
+			colorlegend("#map-legend", scale, "linear", {title: legend[indicator].title});
 
 		}// end RenderNewmap
 
