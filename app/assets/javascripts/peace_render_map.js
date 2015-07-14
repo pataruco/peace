@@ -1,5 +1,5 @@
 $(document).ready(function() {
-	// Variables  //
+	// Variables *******************************************************************
 	var legend = {
 		hdi_index: {title: 'Human Development Index', colors: ['#fff7ec', '#fc8d59', '#7f0000']},
 		edu_index: {title: 'Education Index', colors: ['#f7fcfd', '#8c6bb1', '#4d004b']},
@@ -10,7 +10,7 @@ $(document).ready(function() {
 		gdp: {title: 'GDP', colors: ['#fff7f3', '#f768a1', '#49006a']}
 	}
 
-	//event listeners //
+	//event listeners **************************************************************
 	$('#hdi_index').on('click', chooseIndicator);
 	$('#edu_index').on('click', chooseIndicator);
 	$('#heal_index').on('click', chooseIndicator);
@@ -19,7 +19,7 @@ $(document).ready(function() {
 	$('#life').on('click', chooseIndicator);
 	$('#gdp').on('click', chooseIndicator);
 
-	//Rendering a map
+	//Rendering a map **************************************************************
 	var map = new Datamap({
 		element: document.getElementById('map-container'),
 
@@ -62,17 +62,37 @@ $(document).ready(function() {
         				});
         				infoCountryWindow(country_data);
 	    			});
-
+	    			// function to populate the country window with D3 visualization
 	    			function infoCountryWindow(country_data) {
-	    				console.log('inside infoCountryWindow ');
+	    				console.log('inside infoCountryWindow');
 	    				console.log(country_data);
-	    			}// end infoCountryWindow		
-        	});
-		},
+
+	    				$.ajax({
+	    					type: "GET",
+							contentType: "application/json; charset=utf-8",
+							url: 'peaces/index',
+							dataType: 'json',
+							success: function (world_data){
+								console.log('success');
+							},
+							error: function (data){
+								console.log('error');
+								console.log(data);
+							}
+						}).done(function(world_data){
+							console.log(world_data);
+						});// end of done
+
+	    			}// end infoCountryWindow	
+
+        	}); // end of on('click', function(geography) 
+
+		}// end of .done
+
 	}); // end of map
 	
 
-	// Choosing indicator to update Choropleth map
+	// Choosing indicator to update Choropleth map *********************************
 	function chooseIndicator () {
 		$('#map-legend').html('');
 		indicator = this.id;
@@ -81,7 +101,7 @@ $(document).ready(function() {
 		renderChoropleth(indicator, indicatorColor);
 	};
 
-	//Retrieving the data dinamically depending of which indicatorColor has benn choosen
+	//Retrieving the data dinamically depending of which indicatorColor has been choosen
 	function renderChoropleth (indicator, indicatorColor) {
 		$.ajax({
 			type: "GET",
