@@ -60,7 +60,13 @@ $(document).ready(function() {
 		        			top: yCoord, // need x and y coordinates from click
 		        			left: xCoord
         				});
-	    			});		
+        				infoCountryWindow(country_data);
+	    			});
+
+	    			function infoCountryWindow(country_data) {
+	    				console.log('inside infoCountryWindow ');
+	    				console.log(country_data);
+	    			}// end infoCountryWindow		
         	});
 		},
 	}); // end of map
@@ -121,7 +127,7 @@ $(document).ready(function() {
 			);
 			
 			// method from d3.colorLegend library to render a legend
-			
+
 			colorlegend("#map-legend", scale, "linear", {title: legend[indicator].title });
 
 		}// end RenderNewmap
