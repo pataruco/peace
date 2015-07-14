@@ -18,7 +18,7 @@ $(document).ready(function() {
 
 		projection: 'mercator',
 
-		fills: {defaultFill: 'F4FDFF'},
+		fills: {defaultFill: '#525252'},
 
 		geographyConfig: {
             borderColor: 'white',
