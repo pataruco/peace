@@ -1,9 +1,16 @@
 $(document).ready(function() {
-	// Variables
-	// var country_data = [];
-	// var indicator = '';
+	// Variables  //
+	var legend = {
+		hdi_index: {title: 'Human Development Index', colors: ['#fff7ec', '#fee8c8', '#fdd49e', '#fdbb84', '#fc8d59', '#ef6548', '#d7301f', '#b30000', '#7f0000']},
+		edu_index: {title: 'Education Index', colors: ['#f7fcfd', '#e0ecf4', '#bfd3e6', '#9ebcda', '#8c96c6', '#8c6bb1', '#88419d', '#810f7c', '#4d004b']},
+		heal_index: {title: 'Health Index', colors: ['#f7fcf0', '#e0f3db', '#ccebc5', '#a8ddb5', '#7bccc4', '#4eb3d3', '#2b8cbe', '#0868ac', '#084081']},
+		edu_exp: {title: 'Education Expenditure', colors: ['#f7fcfd', '#e5f5f9', '#ccece6', '#99d8c9', '#66c2a4', '#41ae76', '#238b45', '#006d2c', '#00441b']},
+		heal_exp: {title: 'Health Expenditure', colors: ['#fff7fb', '#ece7f2', '#d0d1e6', '#a6bddb', '#74a9cf', '#3690c0', '#0570b0', '#045a8d', '#023858']},
+		life: {title: 'Life Expectancy', colors: ['#ffffcc', '#ffeda0', '#fed976', '#feb24c', '#fd8d3c', '#fc4e2a', '#e31a1c', '#bd0026', '#800026']},
+		gdp: {title: 'GDP', colors: ['#fff7f3', '#fde0dd', '#fcc5c0', '#fa9fb5', '#f768a1', '#dd3497', '#ae017e', '#7a0177', '#49006a']}
+	}
 
-	//event listeners
+	//event listeners //
 	$('#hdi_index').on('click', chooseIndicator);
 	$('#edu_index').on('click', chooseIndicator);
 	$('#heal_index').on('click', chooseIndicator);
@@ -110,7 +117,3 @@ $(document).ready(function() {
 	
     
 }); // end of document
-
-
-
-colorbrewer['rgb(247,252,253)','rgb(229,245,249)','rgb(204,236,230)','rgb(153,216,201)','rgb(102,194,164)','rgb(65,174,118)','rgb(35,139,69)','rgb(0,109,44)','rgb(0,68,27)']
