@@ -18,6 +18,8 @@ $(document).ready(function() {
 
 		projection: 'mercator',
 
+		responsive: true,
+
 		fills: {defaultFill: 'F4FDFF'},
 
 		geographyConfig: {
@@ -27,7 +29,7 @@ $(document).ready(function() {
 	        highlightBorderColor: 'black',
 	        highlightBorderWidth: 1,
 	        popupOnHover: false,
-            },
+        },
 
 		done: function(datamap) {
 			datamap.svg.selectAll('.datamaps-subunit').on('click', function(geography) {
@@ -59,12 +61,14 @@ $(document).ready(function() {
 		},
 	}); // end of map
 
+	// Choosing indicator to update Choropleth map
 	function chooseIndicator () {
 		indicator = this.id + '_color';
 		console.log(indicator)
 		renderChoropleth(indicator);
 	};
 
+	//Retrieving the data dinamically depending of which indicator has benn choosen
 	function renderChoropleth (indicator) {
 		// var localIndicator = indicator;
 		$.ajax({
@@ -84,7 +88,18 @@ $(document).ready(function() {
 			renderNewMap(data, indicator);
 		});// end of done
 
+
 		function renderNewMap(data, indicator) {
+			debugger
+			var map = new Datamap({
+				element: document.getElementById('map-container'),
+				done: function(datamap) {
+					renderNewChoroplethMap(data, indicator);
+				}
+			})
+		}// end of renderNewMaP
+
+		function renderNewChoroplethMap(data, indicator) {
 			var colors = {};
 			data.forEach(function(country){
 				colors[country.country_code] = country[indicator];
@@ -103,5 +118,5 @@ $(document).ready(function() {
 	 	map.resize();
 	});
 	
-       
+    
 }); // end of document
