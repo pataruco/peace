@@ -69,6 +69,7 @@ $(document).ready(function() {
 
 	// Choosing indicator to update Choropleth map
 	function chooseIndicator () {
+		$('#map-legend').html('');
 		indicator = this.id;
 		indicatorColor = this.id + '_color';
 		console.log(indicatorColor)
@@ -120,9 +121,7 @@ $(document).ready(function() {
 			map.updateChoropleth(
 				colors
 			);// end map.updateChoropleth
-
-			// $('#map-legend').hide();
-			// colorlegend("#map-container", scale, "linear", {title: legend[indicator].title, fill: true});
+			
 			colorlegend("#map-legend", scale, "linear", {title: legend[indicator].title });
 
 		}// end RenderNewmap
@@ -134,5 +133,4 @@ $(document).ready(function() {
 		map.resize();
     });
 
-    
 }); // end of document
