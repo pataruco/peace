@@ -109,15 +109,20 @@ $(document).ready(function() {
 			var mean = d3.sum(indicatorsArray) / indicatorsArray.length;
 			var max = d3.max(indicatorsArray);
 
+			var colorMin = legend[indicator].colors[0]; 
+			var colorMean = legend[indicator].colors[4]; 
+			var colorMax = legend[indicator].colors[8];
+
 			var scale = d3.scale.linear()
     			.domain([min, mean, max])
-    			.range(["red", "white", "green"]);
+    			.range([colorMin, colorMean, colorMax]);
 
 			map.updateChoropleth(
 				colors
 			);// end map.updateChoropleth
 
-			colorlegend("#map-legend", scale, "linear", {title: legend[indicator].title });
+			// $('#map-legend').hide();
+			colorlegend("#map-legend", scale, "linear", {title: legend[indicator].title, fill: true});
 
 		}// end RenderNewmap
 
