@@ -134,12 +134,6 @@ $(document).ready(function() {
 							var life_data = [{scope: 'World', life: world_life}, {scope: country_name, life: country_life}];
 							var gdp_data = [{scope: 'World', gdp: world_gdp}, {scope: country_name, gdp: country_gdp}];
 
-							debugger;
-
-
-
-
-
 							var barWidth = 60;
 							var width = (barWidth + 10) * hdi_index_data.length;
 							var height = 100;
@@ -149,7 +143,7 @@ $(document).ready(function() {
 							  rangeRound([0, height]);
 
 							// add the canvas to the DOM
-							var barDemo = d3.select("#info-country").
+							var barDemo = d3.select("#hdi_index_data").
 							  append("svg:svg").
 							  attr("width", width).
 							  attr("height", 230);
