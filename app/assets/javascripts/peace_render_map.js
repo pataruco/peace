@@ -84,10 +84,7 @@ $(document).ready(function() {
 						});// end of done
 
 						function RenderInfoCountryWindow(country_data, world_data){
-							// console.log('inside RenderInfoCountryWindow ');
-							// console.log(country_data);
-							// console.log(world_data);
-
+						
 							var country_name = country_data[0].country_name;
 							var country_hdi_index = country_data[0].hdi_index;
 							var country_edu_index = country_data[0].edu_index;
@@ -134,9 +131,11 @@ $(document).ready(function() {
 							var life_data = [{scope: 'World', life: world_life}, {scope: country_name, life: country_life}];
 							var gdp_data = [{scope: 'World', gdp: world_gdp}, {scope: country_name, gdp: country_gdp}];
 
-							var indicators = [hdi_index, edu_index, heal_index, edu_exp, heal_exp, life, gdp];
+							var indicators = ['hdi_index', 'edu_index', 'heal_index', 'edu_exp', 'heal_exp', 'life', 'gdp'];
 
-							debugger;
+							indicators.forEach(function(indicator){
+								console.log(indicator)
+							});
 
 							var barWidth = 60;
 							var width = (barWidth + 10) * hdi_index_data.length;
