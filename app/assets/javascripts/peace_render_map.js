@@ -131,19 +131,7 @@ $(document).ready(function() {
 							var life_data = [{scope: 'World', life: world_life}, {scope: country_name, life: country_life}];
 							var gdp_data = [{scope: 'World', gdp: world_gdp}, {scope: country_name, gdp: country_gdp}];
 
-							var indicators = ['hdi_index', 'edu_index', 'heal_index', 'edu_exp', 'heal_exp', 'life', 'gdp'];
-
-							// indicators.forEach(function(indicator){
-							// 	console.log(indicator)
-
-							// 	var barWidth = 60;
-							// 	var width = (barWidth + 10) * indicator + _data.length;
-							// 	var height = 100;
-
-							// 	debugger;
-
-							// });
-
+//************************** render HDI D3 Visualization inside a div**************************************************
 							var barWidth = 60;
 							var width = (barWidth + 10) * hdi_index_data.length;
 							var height = 100;
@@ -153,12 +141,12 @@ $(document).ready(function() {
 							  rangeRound([0, height]);
 
 							// add the canvas to the DOM
-							var barDemo = d3.select("#hdi_index_data").
+							var hdiBar = d3.select("#hdi_index_data").
 							  append("svg:svg").
 							  attr("width", width).
 							  attr("height", 230);
 
-							barDemo.selectAll("rect").
+							hdiBar.selectAll("rect").
 							  data(hdi_index_data).
 							  enter().
 							  append("svg:rect").
@@ -170,7 +158,7 @@ $(document).ready(function() {
 
 							  // numbers on bars
 
-							  barDemo.selectAll("text").
+							  hdiBar.selectAll("text").
 							  data(hdi_index_data).
 							  enter().
 							  append("svg:text").
@@ -184,7 +172,7 @@ $(document).ready(function() {
 
 							// scale
 
-							barDemo.selectAll("text.yAxis").
+							hdiBar.selectAll("text.yAxis").
 							  data(hdi_index_data).
 							  enter().append("svg:text").
 							  attr("x", function(datum, index) { return x(index) + barWidth; }).
@@ -195,7 +183,7 @@ $(document).ready(function() {
 							  text(function(datum) { return datum.scope;}).
 							  attr("transform", "translate(0, 18)").
 							  attr("class", "yAxis");
-
+//*****************************************************************************************************************************
 					
 						}// RenderInfoCountryWindow
 
