@@ -124,13 +124,12 @@ $(document).ready(function() {
 							var world_life = (d3.sum(world_life_array) / world_life_array.length).toFixed(3);
 							var world_gdp = (d3.sum(world_gdp_array) / world_gdp_array.length).toFixed(3);
 
-							debugger;
+							
+
+							var hdi_index_data = [{scope: 'World', hdi_index: world_hdi_index}, {scope: country_name, hdi_index: country_hdi_index}];
+							var edu_index_data = [{scope: 'World', hdi_index: world_hdi_index}, {scope: country_name, hdi_index: country_hdi_index}];
 
 
-							var hdi_index_data = [
-													{scope: 'World', hdi: world_hdi_index},
-													{scope: country_name, hdi: country_hdi_index}
-            									];
 
 
 							var barWidth = 60;
@@ -138,7 +137,7 @@ $(document).ready(function() {
 							var height = 100;
 
 							var x = d3.scale.linear().domain([0, hdi_index_data.length]).range([0, width]);
-							var y = d3.scale.linear().domain([0, d3.max(hdi_index_data, function(datum) { return datum.hdi})]).
+							var y = d3.scale.linear().domain([0, d3.max(hdi_index_data, function(datum) { return datum.hdi_index})]).
 							  rangeRound([0, height]);
 
 							// add the canvas to the DOM
@@ -152,8 +151,8 @@ $(document).ready(function() {
 							  enter().
 							  append("svg:rect").
 							  attr("x", function(datum, index) { return x(index); }).
-							  attr("y", function(datum) { return height - y(datum.hdi); }).
-							  attr("height", function(datum) { return y(datum.hdi); }).
+							  attr("y", function(datum) { return height - y(datum.hdi_index); }).
+							  attr("height", function(datum) { return y(datum.hdi_index); }).
 							  attr("width", barWidth).
 							  attr("fill", "#2d578b");
 
@@ -164,11 +163,11 @@ $(document).ready(function() {
 							  enter().
 							  append("svg:text").
 							  attr("x", function(datum, index) { return x(index) + barWidth; }).
-							  attr("y", function(datum) { return height - y(datum.hdi); }).
+							  attr("y", function(datum) { return height - y(datum.hdi_index); }).
 							  attr("dx", -barWidth/2).
 							  attr("dy", "1.2em").
 							  attr("text-anchor", "middle").
-							  text(function(datum) { return datum.hdi;}).
+							  text(function(datum) { return datum.hdi_index;}).
 							  attr("fill", "white");
 
 							// scale
