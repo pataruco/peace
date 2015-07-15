@@ -125,27 +125,27 @@ $(document).ready(function() {
 							var world_gdp = d3.sum(world_gdp_array) / world_gdp_array.length;
 
 
-							var data = [{scope: 'world', hdi: 0.755},
-            							{scope: 'Norway', hdi: 0.93}
-            							];
+							var hdi_index_data = [{scope: 'World', hdi: 0.755},
+            										{scope: 'Norway', hdi: 0.93}
+            									];
 
 
-							var barWidth = 40;
-							var width = (barWidth + 10) * data.length;
-							var height = 200;
+							var barWidth = 60;
+							var width = (barWidth + 10) * hdi_index_data.length;
+							var height = 100;
 
-							var x = d3.scale.linear().domain([0, data.length]).range([0, width]);
-							var y = d3.scale.linear().domain([0, d3.max(data, function(datum) { return datum.hdi})]).
+							var x = d3.scale.linear().domain([0, hdi_index_data.length]).range([0, width]);
+							var y = d3.scale.linear().domain([0, d3.max(hdi_index_data, function(datum) { return datum.hdi})]).
 							  rangeRound([0, height]);
 
 							// add the canvas to the DOM
 							var barDemo = d3.select("#info-country").
 							  append("svg:svg").
 							  attr("width", width).
-							  attr("height", height);
+							  attr("height", 230);
 
 							barDemo.selectAll("rect").
-							  data(data).
+							  data(hdi_index_data).
 							  enter().
 							  append("svg:rect").
 							  attr("x", function(datum, index) { return x(index); }).
@@ -157,7 +157,7 @@ $(document).ready(function() {
 							  // numbers on bars
 
 							  barDemo.selectAll("text").
-							  data(data).
+							  data(hdi_index_data).
 							  enter().
 							  append("svg:text").
 							  attr("x", function(datum, index) { return x(index) + barWidth; }).
@@ -171,7 +171,7 @@ $(document).ready(function() {
 							// scale
 
 							barDemo.selectAll("text.yAxis").
-							  data(data).
+							  data(hdi_index_data).
 							  enter().append("svg:text").
 							  attr("x", function(datum, index) { return x(index) + barWidth; }).
 							  attr("y", height).
@@ -182,14 +182,7 @@ $(document).ready(function() {
 							  attr("transform", "translate(0, 18)").
 							  attr("class", "yAxis");
 
-							document.getElementById('bar-chart').children[0].style.height =230
-
-
-							// debugger;
-
-
 					
-
 						}// RenderInfoCountryWindow
 
 	    			}// end infoCountryWindow	
