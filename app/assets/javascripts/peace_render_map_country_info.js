@@ -9,7 +9,7 @@ function renderCountryInfoData() {
 // *******************************************************************************
 
 	var barWidth = 60;
-	var width = (barWidth + 10) * hdi_index_data.length;
+	var width = 140;
 	var height = 100;
 
 	var x = d3.scale.linear().domain([0, hdi_index_data.length]).range([0, width]);
@@ -63,11 +63,6 @@ function renderCountryInfoData() {
 // *******************************************************************************
 // Education Index
 // *******************************************************************************
-
-	var barWidth = 60;
-	var width = (barWidth + 10) * edu_index_data.length;
-	var height = 100;
-
 	var x = d3.scale.linear().domain([0, edu_index_data.length]).range([0, width]);
 	var y = d3.scale.linear().domain([0, d3.max(edu_index_data, function(datum) { return datum.edu_index})]).
 		rangeRound([0, height]);
@@ -119,10 +114,6 @@ function renderCountryInfoData() {
 // *******************************************************************************
 // Heal Index
 // *******************************************************************************
-
-	var barWidth = 60;
-	var width = (barWidth + 10) * heal_index_data.length;
-	var height = 100;
 
 	var x = d3.scale.linear().domain([0, heal_index_data.length]).range([0, width]);
 	var y = d3.scale.linear().domain([0, d3.max(heal_index_data, function(datum) { return datum.heal_index})]).
@@ -176,10 +167,6 @@ function renderCountryInfoData() {
 // Education Expenditure
 // *******************************************************************************
 
-	var barWidth = 60;
-	var width = (barWidth + 10) * edu_exp_data.length;
-	var height = 100;
-
 	var x = d3.scale.linear().domain([0, edu_exp_data.length]).range([0, width]);
 	var y = d3.scale.linear().domain([0, d3.max(edu_exp_data, function(datum) { return datum.edu_exp})]).
 		rangeRound([0, height]);
@@ -232,10 +219,6 @@ function renderCountryInfoData() {
 // Life Expectancy
 // *******************************************************************************
 
-	var barWidth = 60;
-	var width = (barWidth + 10) * life_data.length;
-	var height = 100;
-
 	var x = d3.scale.linear().domain([0, life_data.length]).range([0, width]);
 	var y = d3.scale.linear().domain([0, d3.max(life_data, function(datum) { return datum.life})]).
 		rangeRound([0, height]);
@@ -287,10 +270,6 @@ function renderCountryInfoData() {
 // *******************************************************************************
 // GDP
 // *******************************************************************************
-	
-	var barWidth = 60;
-	var width = (barWidth + 10) * gdp_data.length;
-	var height = 100;
 
 	var x = d3.scale.linear().domain([0, gdp_data.length]).range([0, width]);
 	var y = d3.scale.linear().domain([0, d3.max(gdp_data, function(datum) { return datum.gdp})]).
@@ -345,10 +324,6 @@ function renderCountryInfoData() {
 // Health Expenditure
 // *******************************************************************************
 	
-	var barWidth = 60;
-	var width = (barWidth + 10) * heal_exp_data.length;
-	var height = 100;
-
 	var x = d3.scale.linear().domain([0, heal_exp_data.length]).range([0, width]);
 	var y = d3.scale.linear().domain([0, d3.max(heal_exp_data, function(datum) { return datum.heal_exp})]).
 		rangeRound([0, height]);
