@@ -133,9 +133,16 @@ $(document).ready(function() {
 
 							var indicators = ['hdi_index', 'edu_index', 'heal_index', 'edu_exp', 'heal_exp', 'life', 'gdp'];
 
-							indicators.forEach(function(indicator){
-								console.log(indicator)
-							});
+							// indicators.forEach(function(indicator){
+							// 	console.log(indicator)
+
+							// 	var barWidth = 60;
+							// 	var width = (barWidth + 10) * indicator + _data.length;
+							// 	var height = 100;
+
+							// 	debugger;
+
+							// });
 
 							var barWidth = 60;
 							var width = (barWidth + 10) * hdi_index_data.length;
