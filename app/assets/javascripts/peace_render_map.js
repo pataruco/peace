@@ -64,8 +64,8 @@ $(document).ready(function() {
 	    			});
 	    			// function to populate the country window with D3 visualization
 	    			function infoCountryWindow(country_data) {
-	    				console.log('inside infoCountryWindow');
-	    				console.log(country_data);
+	    				// console.log('inside infoCountryWindow');
+	    				// console.log(country_data);
 
 	    				$.ajax({
 	    					type: "GET",
@@ -84,27 +84,46 @@ $(document).ready(function() {
 						});// end of done
 
 						function RenderInfoCountryWindow(country_data, world_data){
-							console.log('inside RenderInfoCountryWindow ');
-							console.log(country_data);
-							console.log(world_data);
+							// console.log('inside RenderInfoCountryWindow ');
+							// console.log(country_data);
+							// console.log(world_data);
 
-							var country_name: country_data[0].country_name;
-							var hdi_index: country_data[0].hdi_index;
-							var edu_index: country_data[0].edu_index;
-							var heal_index: country_data[0].heal_index;
-							var edu_exp: country_data[0].edu_exp;
-							var heal_exp: country_data[0].heal_exp;
-							var life: country_data[0].life;
-							var gdp: country_data[0].gdp;
+							var country_name = country_data[0].country_name;
+							var hdi_index = country_data[0].hdi_index;
+							var edu_index = country_data[0].edu_index;
+							var heal_index = country_data[0].heal_index;
+							var edu_exp = country_data[0].edu_exp;
+							var heal_exp = country_data[0].heal_exp;
+							var life = country_data[0].life;
+							var gdp = country_data[0].gdp;
+
+							var world_hdi_index_array = [];
+							var world_edu_index_array = [];
+							var world_heal_index_array = [];
+							var world_edu_exp_array = [];
+							var world_heal_exp_array = [];
+							var world_life_array = [];
+							var world_gdp_array = [];
 
 
+							world_data.forEach(function(country){
+								world_hdi_index_array.push(country.hdi_index);
+								world_edu_index_array.push(country.edu_index);
+								world_heal_index_array.push(country.heal_index);
+								world_edu_exp_array.push(country.edu_exp);
+								world_heal_exp_array.push(country.heal_exp);
+								world_life_array.push(country.life);
+								world_gdp_array.push(country.gdp);
+							});
 
-							
+							var world_hdi_index = d3.sum(world_hdi_index_array) / world_hdi_index_array.length;
 
 							debugger;
-							// var country_name = country_data
 
-						}
+
+					
+
+						}// RenderInfoCountryWindow
 
 	    			}// end infoCountryWindow	
 
