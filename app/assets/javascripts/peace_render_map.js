@@ -1,3 +1,6 @@
+// *******************************************************************************
+// Variables
+// *******************************************************************************
 var world_hdi_index_array = [];
 var world_edu_index_array = [];
 var world_heal_index_array = [];
@@ -33,8 +36,19 @@ var world_heal_exp;
 var world_life;
 var world_gdp;
 
+var hdi_index_data = [];
+var edu_index_data = [];
+var heal_index_data = [];
+var edu_exp_data = [];
+var heal_exp_data = [];
+var life_data = [];
+var gdp_data = [];
+
 $(document).ready(function() {
-	//event listeners **************************************************************
+// *******************************************************************************
+// Event Listeners
+// *******************************************************************************
+
 	$('#hdi_index').on('click', chooseIndicator);
 	$('#edu_index').on('click', chooseIndicator);
 	$('#heal_index').on('click', chooseIndicator);
@@ -43,7 +57,9 @@ $(document).ready(function() {
 	$('#life').on('click', chooseIndicator);
 	$('#gdp').on('click', chooseIndicator);
 
-	//Rendering a map **************************************************************
+// *******************************************************************************
+// Rendering the map
+// *******************************************************************************
 	var map = new Datamap({
 		element: document.getElementById('map-container'),
 
@@ -136,334 +152,15 @@ $(document).ready(function() {
 							world_life = (d3.sum(world_life_array) / world_life_array.length).toFixed(3);
 							world_gdp = (d3.sum(world_gdp_array) / world_gdp_array.length).toFixed(3);
 
-							
+							hdi_index_data = [{scope: 'World', hdi_index: world_hdi_index}, {scope: country_name, hdi_index: country_hdi_index}];
+							edu_index_data = [{scope: 'World', edu_index: world_edu_index}, {scope: country_name, edu_index: country_hdi_index}];
+							heal_index_data = [{scope: 'World', heal_index: world_heal_index}, {scope: country_name, heal_index: country_heal_index}];
+							edu_exp_data = [{scope: 'World', edu_exp: world_edu_exp}, {scope: country_name, edu_exp: country_edu_exp}];
+							heal_exp_data = [{scope: 'World', heal_exp: world_heal_exp}, {scope: country_name, heal_exp: country_heal_exp}];
+							life_data = [{scope: 'World', life: world_life}, {scope: country_name, life: country_life}];
+							gdp_data = [{scope: 'World', gdp: world_gdp}, {scope: country_name, gdp: country_gdp}];
 
-							var hdi_index_data = [{scope: 'World', hdi_index: world_hdi_index}, {scope: country_name, hdi_index: country_hdi_index}];
-							var edu_index_data = [{scope: 'World', edu_index: world_edu_index}, {scope: country_name, edu_index: country_hdi_index}];
-							var heal_index_data = [{scope: 'World', heal_index: world_heal_index}, {scope: country_name, heal_index: country_heal_index}];
-							var edu_exp_data = [{scope: 'World', edu_exp: world_edu_exp}, {scope: country_name, edu_exp: country_edu_exp}];
-							var heal_exp_data = [{scope: 'World', heal_exp: world_heal_exp}, {scope: country_name, heal_exp: country_heal_exp}];
-							var life_data = [{scope: 'World', life: world_life}, {scope: country_name, life: country_life}];
-							var gdp_data = [{scope: 'World', gdp: world_gdp}, {scope: country_name, gdp: country_gdp}];
-
-//************************** render HDI D3 Visualization inside a div**************************************************
-							var barWidth = 60;
-							var width = (barWidth + 10) * hdi_index_data.length;
-							var height = 100;
-
-							var x = d3.scale.linear().domain([0, hdi_index_data.length]).range([0, width]);
-							var y = d3.scale.linear().domain([0, d3.max(hdi_index_data, function(datum) { return datum.hdi_index})]).
-							  rangeRound([0, height]);
-
-							// add the canvas to the DOM
-							var hdiBar = d3.select("#hdi_index_data").
-							  append("svg:svg").
-							  attr("width", width).
-							  attr("height", 230);
-
-							hdiBar.selectAll("rect").
-							  data(hdi_index_data).
-							  enter().
-							  append("svg:rect").
-							  attr("x", function(datum, index) { return x(index); }).
-							  attr("y", function(datum) { return height - y(datum.hdi_index); }).
-							  attr("height", function(datum) { return y(datum.hdi_index); }).
-							  attr("width", barWidth).
-							  attr("fill", "#2d578b");
-
-							  // numbers on bars
-
-							  hdiBar.selectAll("text").
-							  data(hdi_index_data).
-							  enter().
-							  append("svg:text").
-							  attr("x", function(datum, index) { return x(index) + barWidth; }).
-							  attr("y", function(datum) { return height - y(datum.hdi_index); }).
-							  attr("dx", -barWidth/2).
-							  attr("dy", "1.2em").
-							  attr("text-anchor", "middle").
-							  text(function(datum) { return datum.hdi_index;}).
-							  attr("fill", "white");
-
-							// scale
-
-							hdiBar.selectAll("text.yAxis").
-							  data(hdi_index_data).
-							  enter().append("svg:text").
-							  attr("x", function(datum, index) { return x(index) + barWidth; }).
-							  attr("y", height).
-							  attr("dx", -barWidth/2).
-							  attr("text-anchor", "middle").
-							  attr("style", "font-size: 12; font-family: Helvetica, sans-serif").
-							  text(function(datum) { return datum.scope;}).
-							  attr("transform", "translate(0, 18)").
-							  attr("class", "yAxis");
-//*****************************************************************************************************************************
-//************************** render EDUCATION INDEX D3 Visualization inside a div**************************************************
-						    var barWidth = 60;
-							var width = (barWidth + 10) * edu_index_data.length;
-							var height = 100;
-
-							var x = d3.scale.linear().domain([0, edu_index_data.length]).range([0, width]);
-							var y = d3.scale.linear().domain([0, d3.max(edu_index_data, function(datum) { return datum.edu_index})]).
-								rangeRound([0, height]);
-
-							// add the canvas to the DOM
-							var eduIndexBar = d3.select("#edu_index_data").
-							append("svg:svg").
-							attr("width", width).
-							attr("height", 230);
-
-							eduIndexBar.selectAll("rect").
-							data(edu_index_data).
-							enter().
-							append("svg:rect").
-							attr("x", function(datum, index) { return x(index); }).
-							attr("y", function(datum) { return height - y(datum.edu_index); }).
-							attr("height", function(datum) { return y(datum.edu_index); }).
-							attr("width", barWidth).
-							attr("fill", "#2d578b");
-
-							// numbers on bars
-
-							eduIndexBar.selectAll("text").
-							data(edu_index_data).
-							enter().
-							append("svg:text").
-							attr("x", function(datum, index) { return x(index) + barWidth; }).
-							attr("y", function(datum) { return height - y(datum.edu_index); }).
-							attr("dx", -barWidth/2).
-							attr("dy", "1.2em").
-							attr("text-anchor", "middle").
-							text(function(datum) { return datum.edu_index;}).
-							attr("fill", "white");
-
-							// scale
-
-							eduIndexBar.selectAll("text.yAxis").
-							data(edu_index_data).
-							enter().append("svg:text").
-							attr("x", function(datum, index) { return x(index) + barWidth; }).
-							attr("y", height).
-							attr("dx", -barWidth/2).
-							attr("text-anchor", "middle").
-							attr("style", "font-size: 12; font-family: Helvetica, sans-serif").
-							text(function(datum) { return datum.scope;}).
-							attr("transform", "translate(0, 18)").
-							attr("class", "yAxis");	
-//*****************************************************************************************************************************				
-//************************** render HEAL INDEX D3 Visualization inside a div**************************************************
-						    var barWidth = 60;
-							var width = (barWidth + 10) * heal_index_data.length;
-							var height = 100;
-
-							var x = d3.scale.linear().domain([0, heal_index_data.length]).range([0, width]);
-							var y = d3.scale.linear().domain([0, d3.max(heal_index_data, function(datum) { return datum.heal_index})]).
-								rangeRound([0, height]);
-
-							// add the canvas to the DOM
-							var healIndexBar = d3.select("#heal_index_data").
-							append("svg:svg").
-							attr("width", width).
-							attr("height", 230);
-
-							healIndexBar.selectAll("rect").
-							data(heal_index_data).
-							enter().
-							append("svg:rect").
-							attr("x", function(datum, index) { return x(index); }).
-							attr("y", function(datum) { return height - y(datum.heal_index); }).
-							attr("height", function(datum) { return y(datum.heal_index); }).
-							attr("width", barWidth).
-							attr("fill", "#2d578b");
-
-							// numbers on bars
-
-							healIndexBar.selectAll("text").
-							data(heal_index_data).
-							enter().
-							append("svg:text").
-							attr("x", function(datum, index) { return x(index) + barWidth; }).
-							attr("y", function(datum) { return height - y(datum.heal_index); }).
-							attr("dx", -barWidth/2).
-							attr("dy", "1.2em").
-							attr("text-anchor", "middle").
-							text(function(datum) { return datum.heal_index;}).
-							attr("fill", "white");
-
-							// scale
-
-							healIndexBar.selectAll("text.yAxis").
-							data(heal_index_data).
-							enter().append("svg:text").
-							attr("x", function(datum, index) { return x(index) + barWidth; }).
-							attr("y", height).
-							attr("dx", -barWidth/2).
-							attr("text-anchor", "middle").
-							attr("style", "font-size: 12; font-family: Helvetica, sans-serif").
-							text(function(datum) { return datum.scope;}).
-							attr("transform", "translate(0, 18)").
-							attr("class", "yAxis");
-
-//************************** render edu_exp D3 Visualization inside a div**************************************************
-						    var barWidth = 60;
-							var width = (barWidth + 10) * edu_exp_data.length;
-							var height = 100;
-
-							var x = d3.scale.linear().domain([0, edu_exp_data.length]).range([0, width]);
-							var y = d3.scale.linear().domain([0, d3.max(edu_exp_data, function(datum) { return datum.edu_exp})]).
-								rangeRound([0, height]);
-
-							// add the canvas to the DOM
-							var eduExpBar = d3.select("#edu_exp_data").
-							append("svg:svg").
-							attr("width", width).
-							attr("height", 230);
-
-							eduExpBar.selectAll("rect").
-							data(edu_exp_data).
-							enter().
-							append("svg:rect").
-							attr("x", function(datum, index) { return x(index); }).
-							attr("y", function(datum) { return height - y(datum.edu_exp); }).
-							attr("height", function(datum) { return y(datum.edu_exp); }).
-							attr("width", barWidth).
-							attr("fill", "#2d578b");
-
-							// numbers on bars
-
-							eduExpBar.selectAll("text").
-							data(edu_exp_data).
-							enter().
-							append("svg:text").
-							attr("x", function(datum, index) { return x(index) + barWidth; }).
-							attr("y", function(datum) { return height - y(datum.edu_exp); }).
-							attr("dx", -barWidth/2).
-							attr("dy", "1.2em").
-							attr("text-anchor", "middle").
-							text(function(datum) { return datum.edu_exp;}).
-							attr("fill", "white");
-
-							// scale
-
-							eduExpBar.selectAll("text.yAxis").
-							data(edu_exp_data).
-							enter().append("svg:text").
-							attr("x", function(datum, index) { return x(index) + barWidth; }).
-							attr("y", height).
-							attr("dx", -barWidth/2).
-							attr("text-anchor", "middle").
-							attr("style", "font-size: 12; font-family: Helvetica, sans-serif").
-							text(function(datum) { return datum.scope;}).
-							attr("transform", "translate(0, 18)").
-							attr("class", "yAxis");
-//************************** render life D3 Visualization inside a div**************************************************
-						    var barWidth = 60;
-							var width = (barWidth + 10) * life_data.length;
-							var height = 100;
-
-							var x = d3.scale.linear().domain([0, life_data.length]).range([0, width]);
-							var y = d3.scale.linear().domain([0, d3.max(life_data, function(datum) { return datum.life})]).
-								rangeRound([0, height]);
-
-							// add the canvas to the DOM
-							var lifeBar = d3.select("#life_data").
-							append("svg:svg").
-							attr("width", width).
-							attr("height", 230);
-
-							lifeBar.selectAll("rect").
-							data(life_data).
-							enter().
-							append("svg:rect").
-							attr("x", function(datum, index) { return x(index); }).
-							attr("y", function(datum) { return height - y(datum.life); }).
-							attr("height", function(datum) { return y(datum.life); }).
-							attr("width", barWidth).
-							attr("fill", "#2d578b");
-
-							// numbers on bars
-
-							lifeBar.selectAll("text").
-							data(life_data).
-							enter().
-							append("svg:text").
-							attr("x", function(datum, index) { return x(index) + barWidth; }).
-							attr("y", function(datum) { return height - y(datum.life); }).
-							attr("dx", -barWidth/2).
-							attr("dy", "1.2em").
-							attr("text-anchor", "middle").
-							text(function(datum) { return datum.life;}).
-							attr("fill", "white");
-
-							// scale
-
-							lifeBar.selectAll("text.yAxis").
-							data(life_data).
-							enter().append("svg:text").
-							attr("x", function(datum, index) { return x(index) + barWidth; }).
-							attr("y", height).
-							attr("dx", -barWidth/2).
-							attr("text-anchor", "middle").
-							attr("style", "font-size: 12; font-family: Helvetica, sans-serif").
-							text(function(datum) { return datum.scope;}).
-							attr("transform", "translate(0, 18)").
-							attr("class", "yAxis");
-//************************** render gdp D3 Visualization inside a div**************************************************
-						    var barWidth = 60;
-							var width = (barWidth + 10) * gdp_data.length;
-							var height = 100;
-
-							var x = d3.scale.linear().domain([0, gdp_data.length]).range([0, width]);
-							var y = d3.scale.linear().domain([0, d3.max(gdp_data, function(datum) { return datum.gdp})]).
-								rangeRound([0, height]);
-
-							// add the canvas to the DOM
-							var healExpBar = d3.select("#gdp_data").
-							append("svg:svg").
-							attr("width", width).
-							attr("height", 230);
-
-							healExpBar.selectAll("rect").
-							data(gdp_data).
-							enter().
-							append("svg:rect").
-							attr("x", function(datum, index) { return x(index); }).
-							attr("y", function(datum) { return height - y(datum.gdp); }).
-							attr("height", function(datum) { return y(datum.gdp); }).
-							attr("width", barWidth).
-							attr("fill", "#2d578b");
-
-							// numbers on bars
-
-							healExpBar.selectAll("text").
-							data(gdp_data).
-							enter().
-							append("svg:text").
-							attr("x", function(datum, index) { return x(index) + barWidth; }).
-							attr("y", function(datum) { return height - y(datum.gdp); }).
-							attr("dx", -barWidth/2).
-							attr("dy", "1.2em").
-							attr("text-anchor", "middle").
-							text(function(datum) { return datum.gdp;}).
-							attr("fill", "white");
-
-							// scale
-
-							healExpBar.selectAll("text.yAxis").
-							data(gdp_data).
-							enter().append("svg:text").
-							attr("x", function(datum, index) { return x(index) + barWidth; }).
-							attr("y", height).
-							attr("dx", -barWidth/2).
-							attr("text-anchor", "middle").
-							attr("style", "font-size: 12; font-family: Helvetica, sans-serif").
-							text(function(datum) { return datum.scope;}).
-							attr("transform", "translate(0, 18)").
-							attr("class", "yAxis");
-
-
-
+							renderCountryInfoData();
 
 						}// RenderInfoCountryWindow
 
@@ -474,9 +171,10 @@ $(document).ready(function() {
 		}// end of .done
 
 	}); // end of map
-	
+// *******************************************************************************
+// Choosing indicator to update Choropleth map
+// *******************************************************************************
 
-	// Choosing indicator to update Choropleth map *********************************
 	function chooseIndicator () {
 		$('#map-legend').html('');
 		indicator = this.id;
@@ -485,7 +183,10 @@ $(document).ready(function() {
 		renderChoropleth(indicator, indicatorColor);
 	};
 
-	//Retrieving the data dinamically depending of which indicatorColor has been choosen
+// *******************************************************************************
+// Retrieving the data dinamically depending of which indicatorColor has been choosen
+// *******************************************************************************
+
 	function renderChoropleth (indicator, indicatorColor) {
 		$.ajax({
 			type: "GET",
@@ -503,8 +204,10 @@ $(document).ready(function() {
 			renderNewChoroplethMap(data, indicator, indicatorColor);
 		});// end of done
 
+// *******************************************************************************
+// Rendering dinamically a Choropleth with a legend 
+// *******************************************************************************
 
-		// rendering a Choropleth with a legend dinamically
 		function renderNewChoroplethMap(data, indicator, indicatorColor) {
 			var colors = {};
 			var indicatorsArray = [];
@@ -529,8 +232,10 @@ $(document).ready(function() {
 			map.updateChoropleth(
 				colors
 			);
-			
-			// method from d3.colorLegend library to render a legend
+
+// *******************************************************************************
+// Method from d3.colorLegend library to render a legend
+// *******************************************************************************
 
 			colorlegend("#map-legend", scale, "linear", {title: legend[indicator].title});
 
@@ -538,7 +243,10 @@ $(document).ready(function() {
 
 	}// end of renderChoropleth()
 
-	//Make map responsive
+// *******************************************************************************
+// Make map responsive
+// *******************************************************************************
+	
 	d3.select(window).on('resize', function() {
 		map.resize();
     });
