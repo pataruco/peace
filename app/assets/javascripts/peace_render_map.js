@@ -116,13 +116,15 @@ $(document).ready(function() {
 								world_gdp_array.push(country.gdp);
 							});
 
-							var world_hdi_index = d3.sum(world_hdi_index_array) / world_hdi_index_array.length;
-							var world_edu_index = d3.sum(world_edu_index_array) / world_edu_index_array.length;
-							var world_heal_index = d3.sum(world_heal_index_array) / world_heal_index_array.length;
-							var world_edu_exp = d3.sum(world_edu_exp_array) / world_edu_exp_array.length;
-							var world_heal_exp = d3.sum(world_heal_exp_array) / world_heal_exp_array.length;
-							var world_life = d3.sum(world_life_array) / world_life_array.length;
-							var world_gdp = d3.sum(world_gdp_array) / world_gdp_array.length;
+							var world_hdi_index = (d3.sum(world_hdi_index_array) / world_hdi_index_array.length).toFixed(3);
+							var world_edu_index = (d3.sum(world_edu_index_array) / world_edu_index_array.length).toFixed(3);
+							var world_heal_index = (d3.sum(world_heal_index_array) / world_heal_index_array.length).toFixed(3);
+							var world_edu_exp = (d3.sum(world_edu_exp_array) / world_edu_exp_array.length).toFixed(3);
+							var world_heal_exp = (d3.sum(world_heal_exp_array) / world_heal_exp_array.length).toFixed(3);
+							var world_life = (d3.sum(world_life_array) / world_life_array.length).toFixed(3);
+							var world_gdp = (d3.sum(world_gdp_array) / world_gdp_array.length).toFixed(3);
+
+							debugger;
 
 
 							var hdi_index_data = [
