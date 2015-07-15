@@ -125,8 +125,9 @@ $(document).ready(function() {
 							var world_gdp = d3.sum(world_gdp_array) / world_gdp_array.length;
 
 
-							var hdi_index_data = [{scope: 'World', hdi: 0.755},
-            										{scope: 'Norway', hdi: 0.93}
+							var hdi_index_data = [
+													{scope: 'World', hdi: world_hdi_index},
+													{scope: country_name, hdi: country_hdi_index}
             									];
 
 
