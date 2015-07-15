@@ -342,49 +342,49 @@ $(document).ready(function() {
 							text(function(datum) { return datum.scope;}).
 							attr("transform", "translate(0, 18)").
 							attr("class", "yAxis");
-//************************** render heal_exp D3 Visualization inside a div**************************************************
+//************************** render life D3 Visualization inside a div**************************************************
 						    var barWidth = 60;
-							var width = (barWidth + 10) * edu_exp_data.length;
+							var width = (barWidth + 10) * life_data.length;
 							var height = 100;
 
-							var x = d3.scale.linear().domain([0, heal_exp_data.length]).range([0, width]);
-							var y = d3.scale.linear().domain([0, d3.max(heal_exp_data, function(datum) { return datum.heal_exp})]).
+							var x = d3.scale.linear().domain([0, life_data.length]).range([0, width]);
+							var y = d3.scale.linear().domain([0, d3.max(life_data, function(datum) { return datum.life})]).
 								rangeRound([0, height]);
 
 							// add the canvas to the DOM
-							var healExpBar = d3.select("#heal_exp_data").
+							var lifeBar = d3.select("#life_data").
 							append("svg:svg").
 							attr("width", width).
 							attr("height", 230);
 
-							healExpBar.selectAll("rect").
-							data(heal_exp_data).
+							lifeBar.selectAll("rect").
+							data(life_data).
 							enter().
 							append("svg:rect").
 							attr("x", function(datum, index) { return x(index); }).
-							attr("y", function(datum) { return height - y(datum.heal_exp); }).
-							attr("height", function(datum) { return y(datum.heal_exp); }).
+							attr("y", function(datum) { return height - y(datum.life); }).
+							attr("height", function(datum) { return y(datum.life); }).
 							attr("width", barWidth).
 							attr("fill", "#2d578b");
 
 							// numbers on bars
 
-							healExpBar.selectAll("text").
-							data(heal_exp_data).
+							lifeBar.selectAll("text").
+							data(life_data).
 							enter().
 							append("svg:text").
 							attr("x", function(datum, index) { return x(index) + barWidth; }).
-							attr("y", function(datum) { return height - y(datum.heal_exp); }).
+							attr("y", function(datum) { return height - y(datum.life); }).
 							attr("dx", -barWidth/2).
 							attr("dy", "1.2em").
 							attr("text-anchor", "middle").
-							text(function(datum) { return datum.heal_exp;}).
+							text(function(datum) { return datum.life;}).
 							attr("fill", "white");
 
 							// scale
 
-							healExpBar.selectAll("text.yAxis").
-							data(heal_exp_data).
+							lifeBar.selectAll("text.yAxis").
+							data(life_data).
 							enter().append("svg:text").
 							attr("x", function(datum, index) { return x(index) + barWidth; }).
 							attr("y", height).
@@ -394,7 +394,58 @@ $(document).ready(function() {
 							text(function(datum) { return datum.scope;}).
 							attr("transform", "translate(0, 18)").
 							attr("class", "yAxis");
+//************************** render gdp D3 Visualization inside a div**************************************************
+						    var barWidth = 60;
+							var width = (barWidth + 10) * gdp_data.length;
+							var height = 100;
 
+							var x = d3.scale.linear().domain([0, gdp_data.length]).range([0, width]);
+							var y = d3.scale.linear().domain([0, d3.max(gdp_data, function(datum) { return datum.gdp})]).
+								rangeRound([0, height]);
+
+							// add the canvas to the DOM
+							var healExpBar = d3.select("#gdp_data").
+							append("svg:svg").
+							attr("width", width).
+							attr("height", 230);
+
+							healExpBar.selectAll("rect").
+							data(gdp_data).
+							enter().
+							append("svg:rect").
+							attr("x", function(datum, index) { return x(index); }).
+							attr("y", function(datum) { return height - y(datum.gdp); }).
+							attr("height", function(datum) { return y(datum.gdp); }).
+							attr("width", barWidth).
+							attr("fill", "#2d578b");
+
+							// numbers on bars
+
+							healExpBar.selectAll("text").
+							data(gdp_data).
+							enter().
+							append("svg:text").
+							attr("x", function(datum, index) { return x(index) + barWidth; }).
+							attr("y", function(datum) { return height - y(datum.gdp); }).
+							attr("dx", -barWidth/2).
+							attr("dy", "1.2em").
+							attr("text-anchor", "middle").
+							text(function(datum) { return datum.gdp;}).
+							attr("fill", "white");
+
+							// scale
+
+							healExpBar.selectAll("text.yAxis").
+							data(gdp_data).
+							enter().append("svg:text").
+							attr("x", function(datum, index) { return x(index) + barWidth; }).
+							attr("y", height).
+							attr("dx", -barWidth/2).
+							attr("text-anchor", "middle").
+							attr("style", "font-size: 12; font-family: Helvetica, sans-serif").
+							text(function(datum) { return datum.scope;}).
+							attr("transform", "translate(0, 18)").
+							attr("class", "yAxis");
 
 
 
