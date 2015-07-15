@@ -30,7 +30,7 @@ function renderCountryInfoData() {
 	  attr("y", function(datum) { return height - y(datum.hdi_index); }).
 	  attr("height", function(datum) { return y(datum.hdi_index); }).
 	  attr("width", barWidth).
-	  attr("fill", "#2d578b");
+	  attr("fill", "#7f0000");
 
 	  // numbers on bars
 
@@ -86,7 +86,7 @@ function renderCountryInfoData() {
 	attr("y", function(datum) { return height - y(datum.edu_index); }).
 	attr("height", function(datum) { return y(datum.edu_index); }).
 	attr("width", barWidth).
-	attr("fill", "#2d578b");
+	attr("fill", "#4d004b");
 
 	// numbers on bars
 
@@ -142,7 +142,7 @@ function renderCountryInfoData() {
 	attr("y", function(datum) { return height - y(datum.heal_index); }).
 	attr("height", function(datum) { return y(datum.heal_index); }).
 	attr("width", barWidth).
-	attr("fill", "#2d578b");
+	attr("fill", "#084081");
 
 	// numbers on bars
 
@@ -198,7 +198,7 @@ function renderCountryInfoData() {
 	attr("y", function(datum) { return height - y(datum.edu_exp); }).
 	attr("height", function(datum) { return y(datum.edu_exp); }).
 	attr("width", barWidth).
-	attr("fill", "#2d578b");
+	attr("fill", "#00441b");
 
 	// numbers on bars
 
@@ -254,7 +254,7 @@ function renderCountryInfoData() {
 	attr("y", function(datum) { return height - y(datum.life); }).
 	attr("height", function(datum) { return y(datum.life); }).
 	attr("width", barWidth).
-	attr("fill", "#2d578b");
+	attr("fill", "#800026");
 
 	// numbers on bars
 
@@ -297,12 +297,12 @@ function renderCountryInfoData() {
 		rangeRound([0, height]);
 
 	// add the canvas to the DOM
-	var healExpBar = d3.select("#gdp_data").
+	var gdpBar = d3.select("#gdp_data").
 	append("svg:svg").
 	attr("width", width).
 	attr("height", 230);
 
-	healExpBar.selectAll("rect").
+	gdpBar.selectAll("rect").
 	data(gdp_data).
 	enter().
 	append("svg:rect").
@@ -310,11 +310,11 @@ function renderCountryInfoData() {
 	attr("y", function(datum) { return height - y(datum.gdp); }).
 	attr("height", function(datum) { return y(datum.gdp); }).
 	attr("width", barWidth).
-	attr("fill", "#2d578b");
+	attr("fill", "#f768a1");
 
 	// numbers on bars
 
-	healExpBar.selectAll("text").
+	gdpBar.selectAll("text").
 	data(gdp_data).
 	enter().
 	append("svg:text").
@@ -328,7 +328,7 @@ function renderCountryInfoData() {
 
 	// scale
 
-	healExpBar.selectAll("text.yAxis").
+	gdpBar.selectAll("text.yAxis").
 	data(gdp_data).
 	enter().append("svg:text").
 	attr("x", function(datum, index) { return x(index) + barWidth; }).
@@ -339,4 +339,62 @@ function renderCountryInfoData() {
 	text(function(datum) { return datum.scope;}).
 	attr("transform", "translate(0, 18)").
 	attr("class", "yAxis");
-}
+
+
+// *******************************************************************************
+// Health Expenditure
+// *******************************************************************************
+	
+	var barWidth = 60;
+	var width = (barWidth + 10) * heal_exp_data.length;
+	var height = 100;
+
+	var x = d3.scale.linear().domain([0, heal_exp_data.length]).range([0, width]);
+	var y = d3.scale.linear().domain([0, d3.max(heal_exp_data, function(datum) { return datum.heal_exp})]).
+		rangeRound([0, height]);
+
+	// add the canvas to the DOM
+	var heal_expBar = d3.select("#heal_exp_data").
+	append("svg:svg").
+	attr("width", width).
+	attr("height", 230);
+
+	heal_expBar.selectAll("rect").
+	data(heal_exp_data).
+	enter().
+	append("svg:rect").
+	attr("x", function(datum, index) { return x(index); }).
+	attr("y", function(datum) { return height - y(datum.heal_exp); }).
+	attr("height", function(datum) { return y(datum.heal_exp); }).
+	attr("width", barWidth).
+	attr("fill", "#7bccc4");
+
+	// numbers on bars
+
+	heal_expBar.selectAll("text").
+	data(heal_exp_data).
+	enter().
+	append("svg:text").
+	attr("x", function(datum, index) { return x(index) + barWidth; }).
+	attr("y", function(datum) { return height - y(datum.heal_exp); }).
+	attr("dx", -barWidth/2).
+	attr("dy", "1.2em").
+	attr("text-anchor", "middle").
+	text(function(datum) { return datum.heal_exp;}).
+	attr("fill", "white");
+
+	// scale
+
+	heal_expBar.selectAll("text.yAxis").
+	data(heal_exp_data).
+	enter().append("svg:text").
+	attr("x", function(datum, index) { return x(index) + barWidth; }).
+	attr("y", height).
+	attr("dx", -barWidth/2).
+	attr("text-anchor", "middle").
+	attr("style", "font-size: 12; font-family: Helvetica, sans-serif").
+	text(function(datum) { return datum.scope;}).
+	attr("transform", "translate(0, 18)").
+	attr("class", "yAxis");
+
+}//end of the function
