@@ -89,13 +89,13 @@ $(document).ready(function() {
 							// console.log(world_data);
 
 							var country_name = country_data[0].country_name;
-							var hdi_index = country_data[0].hdi_index;
-							var edu_index = country_data[0].edu_index;
-							var heal_index = country_data[0].heal_index;
-							var edu_exp = country_data[0].edu_exp;
-							var heal_exp = country_data[0].heal_exp;
-							var life = country_data[0].life;
-							var gdp = country_data[0].gdp;
+							var country_hdi_index = country_data[0].hdi_index;
+							var country_edu_index = country_data[0].edu_index;
+							var country_heal_index = country_data[0].heal_index;
+							var country_edu_exp = country_data[0].edu_exp;
+							var country_heal_exp = country_data[0].heal_exp;
+							var country_life = country_data[0].life;
+							var country_gdp = country_data[0].gdp;
 
 							var world_hdi_index_array = [];
 							var world_edu_index_array = [];
