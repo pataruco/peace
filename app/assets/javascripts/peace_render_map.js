@@ -342,7 +342,58 @@ $(document).ready(function() {
 							text(function(datum) { return datum.scope;}).
 							attr("transform", "translate(0, 18)").
 							attr("class", "yAxis");
+//************************** render heal_exp D3 Visualization inside a div**************************************************
+						    var barWidth = 60;
+							var width = (barWidth + 10) * edu_exp_data.length;
+							var height = 100;
 
+							var x = d3.scale.linear().domain([0, heal_exp_data.length]).range([0, width]);
+							var y = d3.scale.linear().domain([0, d3.max(heal_exp_data, function(datum) { return datum.heal_exp})]).
+								rangeRound([0, height]);
+
+							// add the canvas to the DOM
+							var healExpBar = d3.select("#heal_exp_data").
+							append("svg:svg").
+							attr("width", width).
+							attr("height", 230);
+
+							healExpBar.selectAll("rect").
+							data(heal_exp_data).
+							enter().
+							append("svg:rect").
+							attr("x", function(datum, index) { return x(index); }).
+							attr("y", function(datum) { return height - y(datum.heal_exp); }).
+							attr("height", function(datum) { return y(datum.heal_exp); }).
+							attr("width", barWidth).
+							attr("fill", "#2d578b");
+
+							// numbers on bars
+
+							healExpBar.selectAll("text").
+							data(heal_exp_data).
+							enter().
+							append("svg:text").
+							attr("x", function(datum, index) { return x(index) + barWidth; }).
+							attr("y", function(datum) { return height - y(datum.heal_exp); }).
+							attr("dx", -barWidth/2).
+							attr("dy", "1.2em").
+							attr("text-anchor", "middle").
+							text(function(datum) { return datum.heal_exp;}).
+							attr("fill", "white");
+
+							// scale
+
+							healExpBar.selectAll("text.yAxis").
+							data(heal_exp_data).
+							enter().append("svg:text").
+							attr("x", function(datum, index) { return x(index) + barWidth; }).
+							attr("y", height).
+							attr("dx", -barWidth/2).
+							attr("text-anchor", "middle").
+							attr("style", "font-size: 12; font-family: Helvetica, sans-serif").
+							text(function(datum) { return datum.scope;}).
+							attr("transform", "translate(0, 18)").
+							attr("class", "yAxis");
 
 
 
