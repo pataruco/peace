@@ -80,8 +80,31 @@ $(document).ready(function() {
 								console.log(data);
 							}
 						}).done(function(world_data){
-							console.log(world_data);
+							RenderInfoCountryWindow(country_data, world_data);
 						});// end of done
+
+						function RenderInfoCountryWindow(country_data, world_data){
+							console.log('inside RenderInfoCountryWindow ');
+							console.log(country_data);
+							console.log(world_data);
+
+							var country_name: country_data[0].country_name;
+							var hdi_index: country_data[0].hdi_index;
+							var edu_index: country_data[0].edu_index;
+							var heal_index: country_data[0].heal_index;
+							var edu_exp: country_data[0].edu_exp;
+							var heal_exp: country_data[0].heal_exp;
+							var life: country_data[0].life;
+							var gdp: country_data[0].gdp;
+
+
+
+							
+
+							debugger;
+							// var country_name = country_data
+
+						}
 
 	    			}// end infoCountryWindow	
 
