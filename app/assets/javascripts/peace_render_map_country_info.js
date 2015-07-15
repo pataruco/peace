@@ -3,14 +3,31 @@
 // *******************************************************************************
 
 function renderCountryInfoData() {	
+	//Clearing the divs
+
+
+
+	$('#hdi_index_data').html('');
+	$('#edu_index_data').html('');
+	$('#heal_index_data').html('');
+	$('#edu_exp_data').html('');
+	$('#heal_exp_data').html('');
+	$('#life_data').html('');
+	$('#gdp_data').html('');
+
+
+	//Setting the Country name
+	countryName = $('#country_name');
+	countryName.text('');
+	countryName.text(country_name);
 
 // *******************************************************************************
 // Human Development Index
 // *******************************************************************************
 
-	var barWidth = 60;
+	var barWidth = 50;
 	var width = 140;
-	var height = 100;
+	var height = 80;
 
 	var x = d3.scale.linear().domain([0, hdi_index_data.length]).range([0, width]);
 	var y = d3.scale.linear().domain([0, d3.max(hdi_index_data, function(datum) { return datum.hdi_index})]).
