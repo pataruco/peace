@@ -1,6 +1,13 @@
+// *******************************************************************************
+// Rendering country data visualization inside a div
+// *******************************************************************************
+
 function renderCountryInfoData() {	
 
-	//************************** render HDI D3 Visualization inside a div**************************************************
+// *******************************************************************************
+// Human Development Index
+// *******************************************************************************
+
 	var barWidth = 60;
 	var width = (barWidth + 10) * hdi_index_data.length;
 	var height = 100;
@@ -52,8 +59,11 @@ function renderCountryInfoData() {
 	  text(function(datum) { return datum.scope;}).
 	  attr("transform", "translate(0, 18)").
 	  attr("class", "yAxis");
-	//*****************************************************************************************************************************
-	//************************** render EDUCATION INDEX D3 Visualization inside a div**************************************************
+
+// *******************************************************************************
+// Education Index
+// *******************************************************************************
+
 	var barWidth = 60;
 	var width = (barWidth + 10) * edu_index_data.length;
 	var height = 100;
@@ -105,8 +115,11 @@ function renderCountryInfoData() {
 	text(function(datum) { return datum.scope;}).
 	attr("transform", "translate(0, 18)").
 	attr("class", "yAxis");	
-	//*****************************************************************************************************************************				
-	//************************** render HEAL INDEX D3 Visualization inside a div**************************************************
+
+// *******************************************************************************
+// Heal Index
+// *******************************************************************************
+
 	var barWidth = 60;
 	var width = (barWidth + 10) * heal_index_data.length;
 	var height = 100;
@@ -159,7 +172,10 @@ function renderCountryInfoData() {
 	attr("transform", "translate(0, 18)").
 	attr("class", "yAxis");
 
-	//************************** render edu_exp D3 Visualization inside a div**************************************************
+// *******************************************************************************
+// Education Expenditure
+// *******************************************************************************
+
 	var barWidth = 60;
 	var width = (barWidth + 10) * edu_exp_data.length;
 	var height = 100;
@@ -211,7 +227,11 @@ function renderCountryInfoData() {
 	text(function(datum) { return datum.scope;}).
 	attr("transform", "translate(0, 18)").
 	attr("class", "yAxis");
-	//************************** render life D3 Visualization inside a div**************************************************
+
+// *******************************************************************************
+// Life Expectancy
+// *******************************************************************************
+
 	var barWidth = 60;
 	var width = (barWidth + 10) * life_data.length;
 	var height = 100;
@@ -263,7 +283,11 @@ function renderCountryInfoData() {
 	text(function(datum) { return datum.scope;}).
 	attr("transform", "translate(0, 18)").
 	attr("class", "yAxis");
-	//************************** render gdp D3 Visualization inside a div**************************************************
+
+// *******************************************************************************
+// GDP
+// *******************************************************************************
+	
 	var barWidth = 60;
 	var width = (barWidth + 10) * gdp_data.length;
 	var height = 100;
