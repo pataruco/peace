@@ -125,7 +125,67 @@ $(document).ready(function() {
 							var world_gdp = d3.sum(world_gdp_array) / world_gdp_array.length;
 
 
-							debugger;
+							var data = [{scope: 'world', hdi: 0.755},
+            							{scope: 'Norway', hdi: 0.93}
+            							];
+
+
+							var barWidth = 40;
+							var width = (barWidth + 10) * data.length;
+							var height = 200;
+
+							var x = d3.scale.linear().domain([0, data.length]).range([0, width]);
+							var y = d3.scale.linear().domain([0, d3.max(data, function(datum) { return datum.hdi})]).
+							  rangeRound([0, height]);
+
+							// add the canvas to the DOM
+							var barDemo = d3.select("#info-country").
+							  append("svg:svg").
+							  attr("width", width).
+							  attr("height", height);
+
+							barDemo.selectAll("rect").
+							  data(data).
+							  enter().
+							  append("svg:rect").
+							  attr("x", function(datum, index) { return x(index); }).
+							  attr("y", function(datum) { return height - y(datum.hdi); }).
+							  attr("height", function(datum) { return y(datum.hdi); }).
+							  attr("width", barWidth).
+							  attr("fill", "#2d578b");
+
+							  // numbers on bars
+
+							  barDemo.selectAll("text").
+							  data(data).
+							  enter().
+							  append("svg:text").
+							  attr("x", function(datum, index) { return x(index) + barWidth; }).
+							  attr("y", function(datum) { return height - y(datum.hdi); }).
+							  attr("dx", -barWidth/2).
+							  attr("dy", "1.2em").
+							  attr("text-anchor", "middle").
+							  text(function(datum) { return datum.hdi;}).
+							  attr("fill", "white");
+
+							// scale
+
+							barDemo.selectAll("text.yAxis").
+							  data(data).
+							  enter().append("svg:text").
+							  attr("x", function(datum, index) { return x(index) + barWidth; }).
+							  attr("y", height).
+							  attr("dx", -barWidth/2).
+							  attr("text-anchor", "middle").
+							  attr("style", "font-size: 12; font-family: Helvetica, sans-serif").
+							  text(function(datum) { return datum.scope;}).
+							  attr("transform", "translate(0, 18)").
+							  attr("class", "yAxis");
+
+							document.getElementById('bar-chart').children[0].style.height =230
+
+
+							// debugger;
 
 
 					
