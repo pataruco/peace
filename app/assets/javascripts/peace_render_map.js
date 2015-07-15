@@ -127,7 +127,15 @@ $(document).ready(function() {
 							
 
 							var hdi_index_data = [{scope: 'World', hdi_index: world_hdi_index}, {scope: country_name, hdi_index: country_hdi_index}];
-							var edu_index_data = [{scope: 'World', hdi_index: world_hdi_index}, {scope: country_name, hdi_index: country_hdi_index}];
+							var edu_index_data = [{scope: 'World', edu_index: world_edu_index}, {scope: country_name, edu_index: country_hdi_index}];
+							var heal_index_data = [{scope: 'World', heal_index: world_heal_index}, {scope: country_name, heal_index: country_heal_index}];
+							var edu_exp_data = [{scope: 'World', edu_exp: world_edu_exp}, {scope: country_name, edu_exp: country_edu_exp}];
+							var heal_exp_data = [{scope: 'World', heal_exp: world_heal_exp}, {scope: country_name, heal_exp: country_heal_exp}];
+							var life_data = [{scope: 'World', life: world_life}, {scope: country_name, life: country_life}];
+							var gdp_data = [{scope: 'World', gdp: world_gdp}, {scope: country_name, gdp: country_gdp}];
+
+							debugger;
+
 
 
 
