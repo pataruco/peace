@@ -398,29 +398,3 @@ function renderCountryInfoData() {
 
 };//end of the function
 
-// *******************************************************************************
-// Hiding the titles from the empty country info div
-// *******************************************************************************
-
-function hideCountryInfoTitle() {
-	hdi_index_title.hide();
-	edu_index_title.hide();
-	heal_index_title.hide();
-	edu_exp_title.hide();
-	heal_exp_title.hide();
-	life_title.hide();
-	gdp_title.hide();
-};
-
-// *******************************************************************************
-// showing the titles from the empty country info div
-// *******************************************************************************
-function showCountryInfoTitle() {
-	hdi_index_title.show();
-	edu_index_title.show();
-	heal_index_title.show();
-	edu_exp_title.show();
-	heal_exp_title.show();
-	life_title.show();
-	gdp_title.show();
-};

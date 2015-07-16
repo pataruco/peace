@@ -51,8 +51,12 @@ var edu_exp_title;
 var heal_exp_title;
 var life_title;
 var gdp_title;
+var infoCountryDiv;
+
 
 $(document).ready(function() {
+
+// infoCountryDiv.css('opacity', '0');
 
 
 // *******************************************************************************
@@ -74,12 +78,13 @@ $(document).ready(function() {
 	heal_exp_title = $('#heal_exp_title');
 	life_title = $('#life_title');
 	gdp_title = $('#gdp_title');
+	infoCountryDiv = $('#info-country')
 
 // *******************************************************************************
 // Hiding the titles from the empty country info div
 // *******************************************************************************
 
-	hideCountryInfoTitle();
+	// hideCountryInfoTitle();
 
 // *******************************************************************************
 // Rendering the map
@@ -280,5 +285,23 @@ $(document).ready(function() {
 	d3.select(window).on('resize', function() {
 		map.resize();
     });
+
+
+// *******************************************************************************
+// Hiding the titles from the empty country info div
+// *******************************************************************************
+
+	function hideCountryInfoTitle() {
+		infoCountryDiv.css('opacity', '0');
+	};
+
+// *******************************************************************************
+// showing the titles from the empty country info div
+// *******************************************************************************
+	function showCountryInfoTitle() {
+		infoCountryDiv.css('opacity', '1');
+	};
+
+	hideCountryInfoTitle();
 
 }); // end of document
