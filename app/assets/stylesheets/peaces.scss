@@ -136,6 +136,57 @@ $primary-font: "Times New Roman", Times, serif;
 }
 
 #info-country {
-	height: 400px;
-	width: 400px;
+	padding-left: 1%;
+  	display: inline-block;
+  	border: 1px solid $primary-color;
+ 	border-radius: 2px;
+ 	position: absolute;
+  	top: 8%;
+  	background-color: rgba(255, 255, 255, .9)
+
 }
+
+#hdi_index_wrapper{
+	// margin-bottom: -33%;
+	display: inline-block;
+  	text-align: center;
+}
+
+#edu_index_wrapper{
+	display: inline-block;
+}
+
+#heal_index_wrapper{
+	display: inline-block;
+}
+
+#edu_exp_wrapper {
+	display: inline-block;
+}
+
+#heal_exp_wrapper{
+	display: inline-block;
+}
+
+#life_wrapper{
+	display: inline-block;
+}
+
+#gdp_wrapper {
+	display: inline-block;
+}
+
+.row_info_country{
+	margin-bottom: -45%;
+}
+
+
+
+
+
+
+
+
+
+
+
