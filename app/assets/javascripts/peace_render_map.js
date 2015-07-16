@@ -70,6 +70,7 @@ $(document).ready(function() {
 	$('#heal_exp').on('click', chooseIndicator);
 	$('#life').on('click', chooseIndicator);
 	$('#gdp').on('click', chooseIndicator);
+	$('#close').on('click', hideCountryInfoTitle);
 
 	hdi_index_title = $('#hdi_index_title');
 	edu_index_title = $('#edu_index_title');
@@ -78,7 +79,8 @@ $(document).ready(function() {
 	heal_exp_title = $('#heal_exp_title');
 	life_title = $('#life_title');
 	gdp_title = $('#gdp_title');
-	infoCountryDiv = $('#info-country')
+	infoCountryDiv = $('#info-country');
+	 ;
 
 // *******************************************************************************
 // Hiding the titles from the empty country info div
