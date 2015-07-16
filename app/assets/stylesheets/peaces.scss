@@ -119,9 +119,9 @@ $secondary-color: rgb(255, 255, 255);
 }
 
 #info-window {
-	width: 100px;
-  	height: 75px;
-  	background-color: white;
+	
+  	background-color: $primary-color;
+  	color: $secondary-color;
 
 }
 
@@ -151,7 +151,13 @@ $secondary-color: rgb(255, 255, 255);
 	// margin-bottom: -33%;
 	display: inline-block;
   	text-align: center;
+
 }
+
+#hdi_index_data {
+	display: inline-block;
+	margin-left: 10%;
+  	}
 
 #edu_index_wrapper{
 	display: inline-block;
@@ -180,6 +186,12 @@ $secondary-color: rgb(255, 255, 255);
 .row_info_country{
 	margin-bottom: -45%;
 }
+
+#close {
+	position: relative;
+	text-align: right;
+}
+
 
 
 

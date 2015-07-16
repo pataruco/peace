@@ -83,12 +83,6 @@ $(document).ready(function() {
 	 ;
 
 // *******************************************************************************
-// Hiding the titles from the empty country info div
-// *******************************************************************************
-
-	// hideCountryInfoTitle();
-
-// *******************************************************************************
 // Rendering the map
 // *******************************************************************************
 	var map = new Datamap({
@@ -303,6 +297,9 @@ $(document).ready(function() {
 	function showCountryInfoTitle() {
 		infoCountryDiv.css('opacity', '1');
 	};
+// *******************************************************************************
+// Hiding the titles from the empty country info div
+// *******************************************************************************	
 
 	hideCountryInfoTitle();
 
