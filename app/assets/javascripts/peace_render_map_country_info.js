@@ -46,7 +46,7 @@ function renderCountryInfoData() {
 	  attr("x", function(datum, index) { return x(index); }).
 	  attr("y", function(datum) { return height - y(datum.hdi_index); }).
 	  attr("height", function(datum) { return y(datum.hdi_index); }).
-	  attr("width", barWidth).
+	  attr("width", 60).
 	  attr("fill", "#7f0000");
 
 	  // numbers on bars
@@ -59,6 +59,7 @@ function renderCountryInfoData() {
 	  attr("y", function(datum) { return height - y(datum.hdi_index); }).
 	  attr("dx", -barWidth/2).
 	  attr("dy", "1.2em").
+	  attr("style", "font-size: 12; font-family: Helvetica, sans-serif").
 	  attr("text-anchor", "middle").
 	  text(function(datum) { return datum.hdi_index;}).
 	  attr("fill", "white");
@@ -110,6 +111,7 @@ function renderCountryInfoData() {
 	attr("y", function(datum) { return height - y(datum.edu_index); }).
 	attr("dx", -barWidth/2).
 	attr("dy", "1.2em").
+	attr("style", "font-size: 12; font-family: Helvetica, sans-serif").
 	attr("text-anchor", "middle").
 	text(function(datum) { return datum.edu_index;}).
 	attr("fill", "white");
@@ -162,6 +164,7 @@ function renderCountryInfoData() {
 	attr("y", function(datum) { return height - y(datum.heal_index); }).
 	attr("dx", -barWidth/2).
 	attr("dy", "1.2em").
+	attr("style", "font-size: 12; font-family: Helvetica, sans-serif").
 	attr("text-anchor", "middle").
 	text(function(datum) { return datum.heal_index;}).
 	attr("fill", "white");
@@ -214,6 +217,7 @@ function renderCountryInfoData() {
 	attr("y", function(datum) { return height - y(datum.edu_exp); }).
 	attr("dx", -barWidth/2).
 	attr("dy", "1.2em").
+	attr("style", "font-size: 12; font-family: Helvetica, sans-serif").
 	attr("text-anchor", "middle").
 	text(function(datum) { return datum.edu_exp;}).
 	attr("fill", "white");
@@ -266,6 +270,7 @@ function renderCountryInfoData() {
 	attr("y", function(datum) { return height - y(datum.life); }).
 	attr("dx", -barWidth/2).
 	attr("dy", "1.2em").
+	attr("style", "font-size: 12; font-family: Helvetica, sans-serif").
 	attr("text-anchor", "middle").
 	text(function(datum) { return datum.life;}).
 	attr("fill", "white");
@@ -318,6 +323,7 @@ function renderCountryInfoData() {
 	attr("y", function(datum) { return height - y(datum.gdp); }).
 	attr("dx", -barWidth/2).
 	attr("dy", "1.2em").
+	attr("style", "font-size: 12; font-family: Helvetica, sans-serif").
 	attr("text-anchor", "middle").
 	text(function(datum) { return datum.gdp;}).
 	attr("fill", "white");
@@ -371,6 +377,7 @@ function renderCountryInfoData() {
 	attr("y", function(datum) { return height - y(datum.heal_exp); }).
 	attr("dx", -barWidth/2).
 	attr("dy", "1.2em").
+	attr("style", "font-size: 12; font-family: Helvetica, sans-serif").
 	attr("text-anchor", "middle").
 	text(function(datum) { return datum.heal_exp;}).
 	attr("fill", "white");
@@ -389,4 +396,31 @@ function renderCountryInfoData() {
 	attr("transform", "translate(0, 18)").
 	attr("class", "yAxis");
 
-}//end of the function
+};//end of the function
+
+// *******************************************************************************
+// Hiding the titles from the empty country info div
+// *******************************************************************************
+
+function hideCountryInfoTitle() {
+	hdi_index_title.hide();
+	edu_index_title.hide();
+	heal_index_title.hide();
+	edu_exp_title.hide();
+	heal_exp_title.hide();
+	life_title.hide();
+	gdp_title.hide();
+};
+
+// *******************************************************************************
+// showing the titles from the empty country info div
+// *******************************************************************************
+function showCountryInfoTitle() {
+	hdi_index_title.show();
+	edu_index_title.show();
+	heal_index_title.show();
+	edu_exp_title.show();
+	heal_exp_title.show();
+	life_title.show();
+	gdp_title.show();
+};

@@ -44,7 +44,17 @@ var heal_exp_data = [];
 var life_data = [];
 var gdp_data = [];
 
+var hdi_index_title;
+var edu_index_title;
+var heal_index_title;
+var edu_exp_title;
+var heal_exp_title;
+var life_title;
+var gdp_title;
+
 $(document).ready(function() {
+
+
 // *******************************************************************************
 // Event Listeners
 // *******************************************************************************
@@ -56,6 +66,20 @@ $(document).ready(function() {
 	$('#heal_exp').on('click', chooseIndicator);
 	$('#life').on('click', chooseIndicator);
 	$('#gdp').on('click', chooseIndicator);
+
+	hdi_index_title = $('#hdi_index_title');
+	edu_index_title = $('#edu_index_title');
+	heal_index_title = $('#heal_index_title');
+	edu_exp_title = $('#edu_exp_title');
+	heal_exp_title = $('#heal_exp_title');
+	life_title = $('#life_title');
+	gdp_title = $('#gdp_title');
+
+// *******************************************************************************
+// Hiding the titles from the empty country info div
+// *******************************************************************************
+
+	hideCountryInfoTitle();
 
 // *******************************************************************************
 // Rendering the map
@@ -152,7 +176,7 @@ $(document).ready(function() {
 							world_edu_exp = (d3.sum(world_edu_exp_array) / world_edu_exp_array.length).toFixed(3);
 							world_heal_exp = (d3.sum(world_heal_exp_array) / world_heal_exp_array.length).toFixed(3);
 							world_life = (d3.sum(world_life_array) / world_life_array.length).toFixed(3);
-							world_gdp = (d3.sum(world_gdp_array) / world_gdp_array.length).toFixed(3);
+							world_gdp = (d3.sum(world_gdp_array) / world_gdp_array.length).toFixed(0);
 
 							hdi_index_data = [{scope: 'World', hdi_index: world_hdi_index}, {scope: country_name, hdi_index: country_hdi_index}];
 							edu_index_data = [{scope: 'World', edu_index: world_edu_index}, {scope: country_name, edu_index: country_hdi_index}];
@@ -165,7 +189,7 @@ $(document).ready(function() {
 // *******************************************************************************
 // Rendering Country Info in an empty div, see peace_render_map_country_info.js
 // *******************************************************************************
-
+							showCountryInfoTitle(); 
 							renderCountryInfoData();
 
 						}// RenderInfoCountryWindow
