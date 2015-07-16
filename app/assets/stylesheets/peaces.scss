@@ -9,18 +9,80 @@ $primary-color: rgb(113, 113, 113);
 $secondary-color: rgb(255, 255, 255);
 
 ///////////////////////////////////////////////////////////////////////////////
+// Fonts
+///////////////////////////////////////////////////////////////////////////////
+$primary-font: "Times New Roman", Times, serif;
+// $secondary-font: 
+
+///////////////////////////////////////////////////////////////////////////////
 // Nav bar
 ///////////////////////////////////////////////////////////////////////////////
 
 .navbar-default{
+	font-family: $primary-font;
 	margin-bottom: 0px;
     border-bottom-width: 0px;
 	height: 50px;
 	border-radius: 2px;
 	background-color: $primary-color;
 	.navbar-brand {
+		font-size: 25px;
 		color: $secondary-color;
 	}
+}
+
+.btn{
+	font-family: $primary-font;
+	border-radius: 1px;
+	color: $secondary-color;
+  	background-color: $primary-color;
+  	border-color: $secondary-color;
+  	font-size: 16px;
+}
+
+.btn-primary:hover{
+	border-radius: 1px;
+	color: $primary-color;
+  	background-color: $secondary-color;
+  	border-color: $primary-color;
+  	font-size: 16px;
+
+}
+
+.btn-primary:active:hover, 
+.btn-primary:active:focus, 
+.btn-primary:active.focus, 
+.btn-primary.active:hover, 
+.btn-primary.active:focus, 
+.btn-primary.active.focus, 
+.open > .btn-primary.dropdown-toggle:hover, 
+.open > .btn-primary.dropdown-toggle:focus, 
+.open > .btn-primary.dropdown-toggle.focus {
+	border-radius: 1px;
+	color: $primary-color;
+  	background-color: $secondary-color;
+  	border-color: $primary-color;
+  	font-size: 16px;
+}
+
+.dropdown {
+	padding-right: 5px;
+    padding-left: 5px;
+	border-radius: 1px;
+	color: $primary-color;
+  	background-color: $secondary-color;
+  	border-color: $primary-color;
+  	font-size: 12px;
+  	li {
+	  	padding-right: 5px;
+	    padding-left: 5px;
+  	}
+  	
+  	li:hover {
+  		background-color: $primary-color;
+  		color: $secondary-color;
+
+  	}
 }
 
 

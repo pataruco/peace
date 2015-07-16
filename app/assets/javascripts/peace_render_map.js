@@ -65,7 +65,7 @@ $(document).ready(function() {
 
 		projection: 'mercator',
 
-		fills: {defaultFill: '#525252'},
+		fills: {defaultFill: 'rgb(113, 113, 113)'},
 
 		geographyConfig: {
             borderColor: 'white',
