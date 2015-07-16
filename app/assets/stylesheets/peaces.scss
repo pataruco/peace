@@ -87,7 +87,6 @@ $primary-font: "Times New Roman", Times, serif;
   	li:hover {
   		background-color: $primary-color;
   		color: $secondary-color;
-
   	}
 }
 
@@ -101,7 +100,7 @@ $primary-font: "Times New Roman", Times, serif;
 
 #map-container {
 	width: 100%;
-	height: 625px;
+	height: 640px;
 	
 }
 
@@ -117,9 +116,6 @@ $primary-font: "Times New Roman", Times, serif;
 	right: 50px;
     padding-left: 0px;
     padding-right: 0px;
-
-
- 
 }
 
 #info-window {
@@ -129,17 +125,17 @@ $primary-font: "Times New Roman", Times, serif;
 
 }
 
-
 #map-legend {
+	position: absolute;
+	top: 92%;
+	left: 45%;
+	display: inline-block;
+	width: 14%;
 	height: 50px;
+	  
 }
 
 #info-country {
 	height: 400px;
 	width: 400px;
-
-}
-
-.yAxis {
-	padding: 30px;
 }

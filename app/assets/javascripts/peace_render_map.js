@@ -76,6 +76,8 @@ $(document).ready(function() {
 	        popupOnHover: false,
         },
 
+        aspectRatio: 0.5625,
+
 		done: function(datamap) {
 			datamap.svg.selectAll('.datamaps-subunit').on('click', function(geography) {
 				var xCoord = d3.event.pageX;
@@ -159,6 +161,10 @@ $(document).ready(function() {
 							heal_exp_data = [{scope: 'World', heal_exp: world_heal_exp}, {scope: country_name, heal_exp: country_heal_exp}];
 							life_data = [{scope: 'World', life: world_life}, {scope: country_name, life: country_life}];
 							gdp_data = [{scope: 'World', gdp: world_gdp}, {scope: country_name, gdp: country_gdp}];
+
+// *******************************************************************************
+// Rendering Country Info in an empty div, see peace_render_map_country_info.js
+// *******************************************************************************
 
 							renderCountryInfoData();
 
