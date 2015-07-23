@@ -27,3 +27,7 @@ A map displaying the choropleth views for the major United Nations Development P
 I built the app on Ruby on Rails and I scraped the data from UNDP Human Development Index Website using Nokogiri, which I then seeded into a PostgreSQL database.
 
 I used D3.js library to manipulate the data and TopoJSON to render the map on the page.
+
+## Take a look
+![](http://pataruco.s3.amazonaws.com/ga/peace/peace-screen.png
+)

@@ -80,7 +80,6 @@ $(document).ready(function() {
 	life_title = $('#life_title');
 	gdp_title = $('#gdp_title');
 	infoCountryDiv = $('#info-country');
-	 ;
 
 // *******************************************************************************
 // Rendering the map
